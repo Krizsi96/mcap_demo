@@ -18,7 +18,7 @@ SENSOR_DATA = [
 ]
 
 
-def main():
+def demo_logging():
     logger = MCAPLogger(Path("test_log.mcap"))
     logger.info("Fetching sensor data")
     for i, sensor_data in enumerate(SENSOR_DATA):
@@ -105,4 +105,4 @@ class MCAPLogger:
 
 
 if __name__ == "__main__":
-    main()
+    demo_logging()
