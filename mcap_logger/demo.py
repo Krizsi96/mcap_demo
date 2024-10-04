@@ -19,8 +19,10 @@ SENSOR_DATA = [
 
 def main():
     logger = MCAPLogger(Path("test_log.mcap"))
+    logger.info("Fetching sensor data")
     for i, sensor_data in enumerate(SENSOR_DATA):
-        time.sleep(1)
+        logger.debug(f"reading sensor... {i}")
+        time.sleep(0.5)
         temperature = sensor_data["temp"]
         humidity = sensor_data["humid"]
 
@@ -33,6 +35,9 @@ def main():
         if temperature < 0:
             logger.warning("Temperature is below zero!")
 
+    logger.error("This is an error")
+    logger.fatal("And this is a fatal error")
+    logger.info("Finished")
     print("logging finished")
 
 
@@ -43,7 +48,7 @@ class Topic:
         self.writer = writer
 
     def write(self, message: Any) -> None:
-        timestamp = int(time.time()) * 1_000_000_000
+        timestamp = int(time.time() * 1_000_000_000)
         print(f"saving message:\n{message}")
         self.writer.write_message(
             topic=self.name,
@@ -62,14 +67,32 @@ class MCAPLogger:
     def __del__(self):
         self.writer.finish()
 
+    def debug(self, message: str) -> None:
+        previous_frame = inspect.currentframe().f_back
+        traceback = inspect.getframeinfo(previous_frame)
+        self._write_log(level="DEBUG", message=message, traceback=traceback)
+
+    def info(self, message: str) -> None:
+        previous_frame = inspect.currentframe().f_back
+        traceback = inspect.getframeinfo(previous_frame)
+        self._write_log(level="INFO", message=message, traceback=traceback)
+
     def warning(self, message: str) -> None:
         previous_frame = inspect.currentframe().f_back
         traceback = inspect.getframeinfo(previous_frame)
         self._write_log(level="WARNING", message=message, traceback=traceback)
 
+    def error(self, message: str) -> None:
+        previous_frame = inspect.currentframe().f_back
+        traceback = inspect.getframeinfo(previous_frame)
+        self._write_log(level="WARNING", message=message, traceback=traceback)
+
+    def fatal(self, message: str) -> None:
+        previous_frame = inspect.currentframe().f_back
+        traceback = inspect.getframeinfo(previous_frame)
+        self._write_log(level="WARNING", message=message, traceback=traceback)
 
     def _write_log(self, level: str, message: str, traceback: Traceback) -> None:
-        traceback.
         log_message = Log(
             timestamp=Timestamp(nanos=0, seconds=int(time.time())),
             level=level,
