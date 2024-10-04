@@ -35,6 +35,18 @@ wheels = [
 ]
 
 [[package]]
+name = "foxglove-schemas-protobuf"
+version = "0.2.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "protobuf" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/d8/3d/53c75d0122719c61b1408c77157bfde3b234bea10beb013f84617780ae53/foxglove_schemas_protobuf-0.2.1.tar.gz", hash = "sha256:4a649b493c417682009a9a3825e2a213381fabfa4075b375858173db3da11383", size = 24050 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ef/43/fdd7ea43cf7adb436618f57d69faf66e0af086adc67787d4f30eeec536a9/foxglove_schemas_protobuf-0.2.1-py3-none-any.whl", hash = "sha256:c26a10399588baf3710fe162ba352699bccc857b77ccc8f964a4eb7fc45cc20a", size = 71552 },
+]
+
+[[package]]
 name = "lz4"
 version = "4.3.3"
 source = { registry = "https://pypi.org/simple" }
@@ -67,11 +79,44 @@ name = "mcap-demo"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "foxglove-schemas-protobuf" },
     { name = "mcap" },
+    { name = "mcap-protobuf-support" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "mcap", specifier = ">=1.1.1" }]
+requires-dist = [
+    { name = "foxglove-schemas-protobuf", specifier = ">=0.2.1" },
+    { name = "mcap", specifier = ">=1.1.1" },
+    { name = "mcap-protobuf-support", specifier = ">=0.5.1" },
+]
+
+[[package]]
+name = "mcap-protobuf-support"
+version = "0.5.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "mcap" },
+    { name = "protobuf" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/e7/5b/171940364af9898fbc52336279c8a30c33611d29a31373ea214aba473d53/mcap_protobuf_support-0.5.1.tar.gz", hash = "sha256:036762200998b6da80a8c2a62676dbd1abc76af65b88aad06ca386260f12a6cb", size = 7314 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/45/ca/17776c73874e3ec2fe1a2401486802d543fcbaafd79367f4793fe8cdf5f8/mcap_protobuf_support-0.5.1-py3-none-any.whl", hash = "sha256:91c1f351a53e9d52634ee9b66bf5dd52cd9f6897984b6c15657e008c545960f6", size = 9650 },
+]
+
+[[package]]
+name = "protobuf"
+version = "5.28.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/b1/a4/4579a61de526e19005ceeb93e478b61d77aa38c8a85ad958ff16a9906549/protobuf-5.28.2.tar.gz", hash = "sha256:59379674ff119717404f7454647913787034f03fe7049cbef1d74a97bb4593f0", size = 422494 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e9/30/231764750e0987755b7b8d66771f161e5f002e165d27b72154c776dbabf7/protobuf-5.28.2-cp310-abi3-win32.whl", hash = "sha256:eeea10f3dc0ac7e6b4933d32db20662902b4ab81bf28df12218aa389e9c2102d", size = 419662 },
+    { url = "https://files.pythonhosted.org/packages/7d/46/3fdf7462160135aee6a530f1ec66665b5b4132fa2e1002ab971bc6ec2589/protobuf-5.28.2-cp310-abi3-win_amd64.whl", hash = "sha256:2c69461a7fcc8e24be697624c09a839976d82ae75062b11a0972e41fd2cd9132", size = 431479 },
+    { url = "https://files.pythonhosted.org/packages/37/45/d2a760580f8f2ed2825ba44cb370e0a4011ddef85e728f46ea3dd565a8a5/protobuf-5.28.2-cp38-abi3-macosx_10_9_universal2.whl", hash = "sha256:a8b9403fc70764b08d2f593ce44f1d2920c5077bf7d311fefec999f8c40f78b7", size = 414736 },
+    { url = "https://files.pythonhosted.org/packages/e6/23/ed718dc18e6a561445ece1e7a17d2dda0c634ad9cf663102b47f10005d8f/protobuf-5.28.2-cp38-abi3-manylinux2014_aarch64.whl", hash = "sha256:35cfcb15f213449af7ff6198d6eb5f739c37d7e4f1c09b5d0641babf2cc0c68f", size = 316518 },
+    { url = "https://files.pythonhosted.org/packages/23/08/a1ce0415a115c2b703bfa798f06f0e43ca91dbe29d6180bf86a9287b15e2/protobuf-5.28.2-cp38-abi3-manylinux2014_x86_64.whl", hash = "sha256:5e8a95246d581eef20471b5d5ba010d55f66740942b95ba9b872d918c459452f", size = 316605 },
+    { url = "https://files.pythonhosted.org/packages/9b/55/f24e3b801d2e108c48aa2b1b59bb791b5cffba89465cbbf66fc98de89270/protobuf-5.28.2-py3-none-any.whl", hash = "sha256:52235802093bd8a2811abbe8bf0ab9c5f54cca0a751fdd3f6ac2a21438bffece", size = 169566 },
+]
 
 [[package]]
 name = "pycparser"
