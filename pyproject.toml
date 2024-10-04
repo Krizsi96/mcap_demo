@@ -5,5 +5,7 @@ description = "playground for mcap"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "foxglove-schemas-protobuf>=0.2.1",
+    "mcap-protobuf-support>=0.5.1",
     "mcap>=1.1.1",
 ]
