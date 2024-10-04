@@ -11,3 +11,9 @@ wheels/
 
 # Logs
 *.mcap
+
+# Protobuf artifacts
+*_pb2.py
+
+# pycharm
+.idea
