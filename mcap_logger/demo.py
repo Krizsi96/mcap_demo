@@ -17,6 +17,7 @@ SENSOR_DATA = [
     {"temp": 3, "humid": 79},
 ]
 
+
 def main():
     logger = MCAPLogger(Path("test_log.mcap"))
     logger.info("Fetching sensor data")
@@ -26,10 +27,7 @@ def main():
         temperature = sensor_data["temp"]
         humidity = sensor_data["humid"]
 
-        sensor_message = SensorData(
-            temperature=temperature,
-            humidity=humidity
-        )
+        sensor_message = SensorData(temperature=temperature, humidity=humidity)
         logger.topic("/sensor_data").write(sensor_message)
 
         if temperature < 0:
@@ -39,7 +37,6 @@ def main():
     logger.fatal("And this is a fatal error")
     logger.info("Finished")
     print("logging finished")
-
 
 
 class Topic:
@@ -56,6 +53,7 @@ class Topic:
             log_time=timestamp,
             publish_time=timestamp,
         )
+
 
 class MCAPLogger:
     def __init__(self, log_file: Path) -> None:
@@ -97,14 +95,14 @@ class MCAPLogger:
             timestamp=Timestamp(nanos=0, seconds=int(time.time())),
             level=level,
             message=message,
-            file=f'{traceback.filename}:{traceback.function}()',
+            file=f"{traceback.filename}:{traceback.function}()",
             line=traceback.lineno,
         )
         self.log_topic.write(log_message)
 
-
     def topic(self, name: str) -> Topic:
         return Topic(name, writer=self.writer)
+
 
 if __name__ == "__main__":
     main()
