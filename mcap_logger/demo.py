@@ -83,12 +83,12 @@ class MCAPLogger:
     def error(self, message: str) -> None:
         previous_frame = inspect.currentframe().f_back
         traceback = inspect.getframeinfo(previous_frame)
-        self._write_log(level="WARNING", message=message, traceback=traceback)
+        self._write_log(level="ERROR", message=message, traceback=traceback)
 
     def fatal(self, message: str) -> None:
         previous_frame = inspect.currentframe().f_back
         traceback = inspect.getframeinfo(previous_frame)
-        self._write_log(level="WARNING", message=message, traceback=traceback)
+        self._write_log(level="FATAL", message=message, traceback=traceback)
 
     def _write_log(self, level: str, message: str, traceback: Traceback) -> None:
         log_message = Log(
