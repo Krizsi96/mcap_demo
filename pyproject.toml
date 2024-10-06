@@ -14,3 +14,12 @@ dev-dependencies = [
     "pre-commit>=3.8.0",
     "ruff>=0.6.9",
 ]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["D", "W605", "ANN101", "SIM108", "TD003", "FIX002", "COM812", "ISC001", "G004"]
+exclude = ["tests/*"]
