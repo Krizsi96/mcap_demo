@@ -1,4 +1,6 @@
 import inspect
+import os
+import tempfile
 import time
 from inspect import Traceback
 from pathlib import Path
@@ -7,36 +9,14 @@ from typing import Any
 from foxglove_schemas_protobuf.Log_pb2 import Log
 from mcap_protobuf.writer import Writer
 from google.protobuf.timestamp_pb2 import Timestamp
-from sensor_data_pb2 import SensorData
 
-SENSOR_DATA = [
-    {"temp": 10, "humid": 70},
-    {"temp": 5, "humid": 75},
-    {"temp": 2, "humid": 78},
-    {"temp": -1, "humid": 80},
-    {"temp": 3, "humid": 79},
-]
+FORMAT = "[{asctime}] [{name}.{funcname}:{lineno}] [{levelname}] {message}"
+LOGGER_ROOT = Path(
+    os.environ.get(
+        "LOGGER_ROOT", Path(tempfile.gettempdir()) / "mcap_logger" / "log.mcap"
+    )
+)
 
-
-def demo_logging():
-    logger = MCAPLogger(Path("test_log.mcap"))
-    logger.info("Fetching sensor data")
-    for i, sensor_data in enumerate(SENSOR_DATA):
-        logger.debug(f"reading sensor... {i}")
-        time.sleep(0.5)
-        temperature = sensor_data["temp"]
-        humidity = sensor_data["humid"]
-
-        sensor_message = SensorData(temperature=temperature, humidity=humidity)
-        logger.topic("/sensor_data").write(sensor_message)
-
-        if temperature < 0:
-            logger.warning("Temperature is below zero!")
-
-    logger.error("This is an error")
-    logger.fatal("And this is a fatal error")
-    logger.info("Finished")
-    print("logging finished")
 
 
 class Topic:
@@ -104,5 +84,10 @@ class MCAPLogger:
         return Topic(name, writer=self.writer)
 
 
-if __name__ == "__main__":
-    demo_logging()
+def get_logger(log_file: Path = LOGGER_ROOT) -> MCAPLogger:
+    create_parent_directory_if_not_there(log_file)
+    return MCAPLogger(log_file)
+
+
+def create_parent_directory_if_not_there(path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
