@@ -1,7 +1,6 @@
 import time
 
 from mcap_logger.demo.sensor_data_pb2 import SensorData
-
 from mcap_logger.mcap_logger import get_logger
 
 SENSOR_DATA = [
@@ -14,8 +13,9 @@ SENSOR_DATA = [
 
 logger = get_logger(__name__)
 
-def demo_logging():
-    print("Running logging demo...")
+
+def demo_logging() -> None:
+    print("Running logging demo...")  # noqa: T201
     logger.info("Fetching sensor data")
     for i, sensor_data in enumerate(SENSOR_DATA):
         logger.debug(f"reading sensor... {i}")
@@ -32,7 +32,8 @@ def demo_logging():
     logger.error("This is an error")
     logger.fatal("And this is a fatal error")
     logger.info("Finished")
-    print("Logging finished")
+    print("Logging finished")  # noqa: T201
+
 
 if __name__ == "__main__":
     demo_logging()

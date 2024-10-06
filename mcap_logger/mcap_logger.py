@@ -8,23 +8,30 @@ from pathlib import Path
 from typing import Any
 
 from foxglove_schemas_protobuf.Log_pb2 import Log
-from mcap_protobuf.writer import Writer
 from google.protobuf.timestamp_pb2 import Timestamp
+from mcap_protobuf.writer import Writer
 
 FORMAT = "[{asctime}] [{name}.{funcName}:{lineno}] [{levelname}] {message}"
 LOGGER_ROOT = Path(
     os.environ.get(
-        "LOGGER_ROOT", Path(tempfile.gettempdir()) / "mcap_logger" / "log.mcap"
-    )
+        "LOGGER_ROOT",
+        Path(tempfile.gettempdir()) / "mcap_logger" / "log.mcap",
+    ),
 )
 
+
 class Topic:
-    def __init__(self, name: str, writer: Writer, logger: logging.Logger = None) -> None:
+    def __init__(
+        self,
+        name: str,
+        writer: Writer,
+        logger: logging.Logger | None = None,
+    ) -> None:
         self.name = name
         self.writer = writer
         self.logger = logger
 
-    def write(self, message: Any) -> None:
+    def write(self, message: Any) -> None:  # noqa: ANN401
         if self.logger:
             self.logger.debug(f"{self.name} topic:\n{message=}")
         timestamp = int(time.time() * 1_000_000_000)
@@ -38,12 +45,12 @@ class Topic:
 
 class MCAPLogger:
     def __init__(self, log_file: Path, logger: logging.Logger) -> None:
-        self.log_file = open(str(log_file), "wb")
+        self.log_file = log_file.open("wb")
         self.writer = Writer(self.log_file)
         self.log_topic = Topic(name="/log", writer=self.writer)
         self.logger = logger
 
-    def __del__(self):
+    def __del__(self) -> None:
         self.writer.finish()
 
     def debug(self, message: str) -> None:
@@ -90,7 +97,11 @@ class MCAPLogger:
         return Topic(name, writer=self.writer, logger=self.logger)
 
 
-def get_logger(name: str, log_file: Path = LOGGER_ROOT, level: int = None) -> MCAPLogger:
+def get_logger(
+    name: str,
+    log_file: Path = LOGGER_ROOT,
+    level: int | str | None = None,
+) -> MCAPLogger:
     create_parent_directory_if_not_there(log_file)
 
     console_handler = logging.StreamHandler()
