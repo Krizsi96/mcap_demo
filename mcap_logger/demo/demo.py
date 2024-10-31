@@ -1,3 +1,7 @@
+"""
+This script only demonstrates how to use the mcap_logger module to log mcap files.
+"""
+
 import time
 
 from mcap_logger.demo.sensor_data_pb2 import SensorData
