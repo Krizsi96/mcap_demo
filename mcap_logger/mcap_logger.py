@@ -56,31 +56,31 @@ class MCAPLogger:
     def debug(self, message: str) -> None:
         previous_frame = inspect.currentframe().f_back
         traceback = inspect.getframeinfo(previous_frame)
-        self.logger.debug(message)
+        self.logger.debug(message, stacklevel=2)
         self._write_log(level="DEBUG", message=message, traceback=traceback)
 
     def info(self, message: str) -> None:
         previous_frame = inspect.currentframe().f_back
         traceback = inspect.getframeinfo(previous_frame)
-        self.logger.info(message)
+        self.logger.info(message, stacklevel=2)
         self._write_log(level="INFO", message=message, traceback=traceback)
 
     def warning(self, message: str) -> None:
         previous_frame = inspect.currentframe().f_back
         traceback = inspect.getframeinfo(previous_frame)
-        self.logger.warning(message)
+        self.logger.warning(message, stacklevel=2)
         self._write_log(level="WARNING", message=message, traceback=traceback)
 
     def error(self, message: str) -> None:
         previous_frame = inspect.currentframe().f_back
         traceback = inspect.getframeinfo(previous_frame)
-        self.logger.error(message)
+        self.logger.error(message, stacklevel=2)
         self._write_log(level="ERROR", message=message, traceback=traceback)
 
     def fatal(self, message: str) -> None:
         previous_frame = inspect.currentframe().f_back
         traceback = inspect.getframeinfo(previous_frame)
-        self.logger.fatal(message)
+        self.logger.fatal(message, stacklevel=2)
         self._write_log(level="FATAL", message=message, traceback=traceback)
 
     def _write_log(self, level: str, message: str, traceback: Traceback) -> None:
