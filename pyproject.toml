@@ -1,8 +1,12 @@
 [project]
-name = "mcap-demo"
-version = "0.2.0"
-description = "playground for mcap"
+name = "mcap-logger"
+version = "0.1.17"
+description = "provides a standardised, easy to import and use logging method with mcap"
+authors = [
+    { name = "Kristof Kovacs", email = "kristof.kovacs1996@gmail.com" }
+]
 readme = "README.md"
+license = { file = "LICENSE" }
 requires-python = ">=3.12"
 dependencies = [
     "foxglove-schemas-protobuf>=0.2.1",
@@ -13,6 +17,7 @@ dependencies = [
 dev-dependencies = [
     "freezegun>=1.5.1",
     "pre-commit>=3.8.0",
+    "pypi-version>=0.2.0",
     "pytest>=8.3.3",
     "ruff>=0.6.9",
 ]
