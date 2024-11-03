@@ -1,6 +1,6 @@
 [project]
 name = "mcap-logger"
-version = "0.1.17"
+version = "0.1.18"
 description = "provides a standardised, easy to import and use logging method with mcap"
 authors = [
     { name = "Kristof Kovacs", email = "kristof.kovacs1996@gmail.com" }
@@ -15,7 +15,8 @@ dependencies = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/8-bit-hunters/mcap_logger"
+Homepage = "https://github.com/8-bit-hunters/mcap_logger"
+Documentation = "https://8-bit-hunters.github.io/mcap_logger/"
 
 [tool.uv]
 dev-dependencies = [

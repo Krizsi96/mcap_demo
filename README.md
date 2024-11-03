@@ -10,6 +10,11 @@ The package is...
 - provides a plugin replacement for standard Python login
 - provides console logging with configurable log level and handled separately from the file's
 
+Links:
+
+- [Documentation](https://8-bit-hunters.github.io/mcap_logger/)
+- [PyPI package](https://pypi.org/project/mcap-logger/)
+
 ## Example usage
 
 ### Installing the library
