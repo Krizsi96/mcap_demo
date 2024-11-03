@@ -28,13 +28,14 @@ class Topic:
         logger: logging.Logger | None = None,
     ) -> None:
         """
-        Initialize Topic entity.
+        Initializes Topic entity.
 
         When logger is not provided the topic won't be logged on the console.
 
-        :param name: the name of the topic
-        :param writer: the MCap file writer with protobuf serialization
-        :param logger: the console logger
+        Args:
+            name: The name of the topic.
+            writer: The MCap file writer with protobuf serialization.
+            logger: The console logger.
         """
         self.name = name
         self.writer = writer
@@ -42,9 +43,10 @@ class Topic:
 
     def write(self, message: Any) -> None:  # noqa: ANN401
         """
-        Write topic with protobuf message to the log file.
+        Writes topic with protobuf message to the log file.
 
-        :param message: the protobuf message
+        Args:
+            message: The protobuf message.
         """
         if self.logger:
             self.logger.debug(f"{self.name} topic:\n{message=}")
@@ -64,8 +66,11 @@ class MCAPLogger:
 
     def __init__(self, log_file: Path, logger: logging.Logger) -> None:
         """
-        :param log_file: the MCap log file to store the logs
-        :param logger: the console logger
+        Initializes the MCapLogger object.
+
+        Args:
+            log_file: The MCap log file to store the logs.
+            logger: The console logger.
         """
         self.log_file = log_file.open("wb")
         self.writer = Writer(self.log_file)
@@ -74,15 +79,16 @@ class MCAPLogger:
 
     def __del__(self) -> None:
         """
-        Run the protobuf writer finish process when the object is deleted.
+        Runs the protobuf writer finish process when the object is deleted.
         """
         self.writer.finish()
 
     def debug(self, message: str) -> None:
         """
-        Log message with `debug` level.
+        Logs message with `debug` level.
 
-        :param message: the log message
+        Args:
+            message: The log message.
         """
         previous_frame = inspect.currentframe().f_back
         traceback = inspect.getframeinfo(previous_frame)
@@ -91,9 +97,10 @@ class MCAPLogger:
 
     def info(self, message: str) -> None:
         """
-        Log message with `info` level.
+        Logs message with `info` level.
 
-        :param message: the log message
+        Args:
+            message: The log message.
         """
         previous_frame = inspect.currentframe().f_back
         traceback = inspect.getframeinfo(previous_frame)
@@ -102,9 +109,10 @@ class MCAPLogger:
 
     def warning(self, message: str) -> None:
         """
-        Log message with `warning` level.
+        Logs message with `warning` level.
 
-        :param message: the log message
+        Args:
+            message: The log message.
         """
         previous_frame = inspect.currentframe().f_back
         traceback = inspect.getframeinfo(previous_frame)
@@ -113,9 +121,10 @@ class MCAPLogger:
 
     def error(self, message: str) -> None:
         """
-        Log message with `error` level.
+        Logs message with `error` level.
 
-        :param message: the log message
+        Args:
+            message: The log message.
         """
         previous_frame = inspect.currentframe().f_back
         traceback = inspect.getframeinfo(previous_frame)
@@ -124,9 +133,10 @@ class MCAPLogger:
 
     def fatal(self, message: str) -> None:
         """
-        Log message with `fatal` level.
+        Logs message with `fatal` level.
 
-        :param message: the log message
+        Args:
+            message: The log message.
         """
         previous_frame = inspect.currentframe().f_back
         traceback = inspect.getframeinfo(previous_frame)
@@ -135,11 +145,12 @@ class MCAPLogger:
 
     def _write_log(self, level: str, message: str, traceback: Traceback) -> None:
         """
-        Write the log message to the log file.
+        Writes the log message to the log file.
 
-        :param level: the log level
-        :param message: the log message
-        :param traceback: the traceback of the log call
+        Args:
+            level: The log level.
+            message: The log message.
+            traceback: The traceback of the log call.
         """
         log_message = Log(
             timestamp=Timestamp(nanos=0, seconds=int(time.time())),
@@ -152,10 +163,13 @@ class MCAPLogger:
 
     def topic(self, name: str) -> Topic:
         """
-        Create a topic with a name, protobuf writer, and console logger.
+        Creates a topic with a name, protobuf writer, and console logger.
 
-        :param name: the name of the topic
-        :return: the created topic
+        Args:
+            name: The name of the topic.
+
+        Returns:
+            The created topic.
         """
         return Topic(name, writer=self.writer, logger=self.logger)
 
@@ -166,12 +180,15 @@ def get_logger(
     level: int | str | None = None,
 ) -> MCAPLogger:
     """
-    Create an MCAPLogger entity.
+    Creates an MCAPLogger entity.
 
-    :param name: the name of the logger
-    :param log_file: the path to the log file
-    :param level: the level of the console logger
-    :return: the created MCAPLogger object
+    Args:
+        name: The name of the logger.
+        log_file: The path to the log file.
+        level: The level of the console logger.
+
+    Returns:
+        The created MCAPLogger object.
     """
     create_parent_directory_if_not_there(log_file)
 
@@ -193,8 +210,9 @@ def get_logger(
 
 def create_parent_directory_if_not_there(path: Path) -> None:
     """
-    Create a parent directory if it does not exist.
+    Creates a parent directory if it does not exist.
 
-    :param path: the path of the file with the parent directory
+    Args:
+        path: The path of the file with the parent directory.
     """
     path.parent.mkdir(parents=True, exist_ok=True)

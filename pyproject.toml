@@ -11,6 +11,7 @@ requires-python = ">=3.12"
 dependencies = [
     "foxglove-schemas-protobuf>=0.2.1",
     "mcap-protobuf-support>=0.5.1",
+    "mkdocs-glightbox>=0.4.0",
 ]
 
 [project.urls]
@@ -19,7 +20,10 @@ dependencies = [
 [tool.uv]
 dev-dependencies = [
     "freezegun>=1.5.1",
+    "mkdocs-material>=8.4.4",
+    "mkdocstrings[python]>=0.26.2",
     "pre-commit>=3.8.0",
+    "pymdown-extensions>=10.12",
     "pypi-version>=0.2.0",
     "pytest>=8.3.3",
     "ruff>=0.6.9",
