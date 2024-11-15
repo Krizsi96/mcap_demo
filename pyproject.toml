@@ -26,6 +26,7 @@ dev-dependencies = [
     "pre-commit>=3.8.0",
     "pymdown-extensions>=10.12",
     "pytest>=8.3.3",
+    "python-semantic-release>=9.14.0",
     "ruff>=0.6.9",
 ]
 
