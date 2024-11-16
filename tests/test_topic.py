@@ -3,7 +3,7 @@ from unittest import mock
 
 from freezegun import freeze_time
 
-from mcap_logger.mcap_logger import Topic
+from mcap_logger.topic_logger import Topic
 
 
 @mock.patch("mcap_logger.mcap_logger.logging.Logger")
