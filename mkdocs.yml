@@ -26,7 +26,8 @@ nav:
       - Installation: tutorials/installation.md
       - Create Your First Log (old version): tutorials/create-you-first-log-old.md
       - Create Your First Log (new version): tutorials/create-you-first-log-new.md
-      - Logging Sensor Data: tutorials/logging-sensor-data.md
+      - Logging Sensor Data (old version): tutorials/logging-sensor-data-old.md
+      - Logging Sensor Data (new version): tutorials/logging-sensor-data-new.md
   - How-To Guides: how-to-guides.md
   - API Reference:
       - MCAP Logger: references/mcap_logger_references.md

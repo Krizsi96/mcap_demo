@@ -1,3 +1,7 @@
+# Create Our First Log (new version)
+
+In this tutorial, we will log a message into a `hello.mcap` file.
+
 ## Setup Our Tutorial Project
 
 !!! note ""
@@ -73,7 +77,7 @@ from mcap_logger.mcap_handler import McapHandler
 
 def main():
     logger = logging.getLogger("mcap_logger")
-    log_file = Path("mcap_log.mcap")
+    log_file = Path("hello.mcap")
     mcap_handler = McapHandler(log_file)
     print("Hello from mcap-logger-tutorial!")
 
@@ -96,7 +100,7 @@ from mcap_logger.mcap_handler import McapHandler
 
 def main():
     logger = logging.getLogger("mcap_logger")
-    log_file = Path("mcap_log.mcap")
+    log_file = Path("hello.mcap")
     mcap_handler = McapHandler(log_file)
     mcap_handler.setLevel("DEBUG")
 

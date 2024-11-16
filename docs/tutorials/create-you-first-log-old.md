@@ -1,3 +1,5 @@
+# Create Our First Log (old version)
+
 ## Setup Our Tutorial Project
 
 !!! note ""
