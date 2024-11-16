@@ -40,14 +40,48 @@ class Topic:
 
 
 class TopicLogger:
+    """
+    A logger class which manages writing data logs to MCAP files.
+
+    Not related to logging.Logger.
+    """
+
     def __init__(self, logger_name: str) -> None:
+        """
+        Fetch ProtoBuf writer from the logger's McapHandler.
+
+        If the logger doesn't have McapHandler, the data logs won't be written.
+
+        Args:
+            logger_name: The name of the logger to get the McapHandler from.
+        """
         self._writer = self._fetch_writer_from_logger(logger_name)
 
     def topic(self, topic_name: str) -> Topic:
+        """
+        Create a topic for data logging.
+
+        Args:
+            topic_name: The name of the topic.
+
+        Returns:
+            The created topic.
+        """
         return Topic(topic_name, writer=self._writer)
 
     @staticmethod
     def _fetch_writer_from_logger(logger_name: str) -> Writer | None:
+        """
+        Fetch ProtoBuf writer from the logger's McapHandler.
+
+        Returns None if the logger doesn't have McapHandler.
+
+        Args:
+            logger_name: The name of the logger to get the McapHandler from.
+
+        Returns:
+            The logger's ProtoBuf writer.
+        """
         for handler in logging.getLogger(logger_name).handlers:
             if isinstance(handler, McapHandler):
                 return handler.writer
