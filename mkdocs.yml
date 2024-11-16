@@ -24,7 +24,8 @@ nav:
   - Home: index.md
   - Getting Started:
       - Installation: tutorials/installation.md
-      - Create Your First Log: tutorials/create-you-first-log.md
+      - Create Your First Log (old version): tutorials/create-you-first-log-old.md
+      - Create Your First Log (new version): tutorials/create-you-first-log-new.md
       - Logging Sensor Data: tutorials/logging-sensor-data.md
   - How-To Guides: how-to-guides.md
   - API Reference:
