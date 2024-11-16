@@ -133,7 +133,7 @@ class MCAPLogger:
         Returns:
             The created topic.
         """
-        return Topic(name, writer=self.writer, logger=self.logger)
+        return Topic(name, writer=self.writer)
 
 
 def get_logger(
