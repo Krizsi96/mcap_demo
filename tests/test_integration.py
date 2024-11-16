@@ -7,8 +7,7 @@ from mcap_protobuf.decoder import DecoderFactory
 
 from mcap_logger.mcap_handler import McapHandler
 from mcap_logger.topic_logger import TopicLogger
-
-from examples.sensor_data_pb2 import SensorData
+from tests.sensor_data_pb2 import SensorData
 
 
 def test_create_log_with_mcap_handler(tmpdir):
