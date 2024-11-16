@@ -30,7 +30,7 @@ class Topic:
         Args:
             message: The protobuf message.
         """
-        timestamp = int(time.time() * 1_000_000_000)
+        timestamp = time.time_ns()
         self._writer.write_message(
             topic=self._name,
             message=message,
