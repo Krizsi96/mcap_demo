@@ -255,6 +255,6 @@ def test_mcap_logger_topic_call(create_mcap_logger):
 
         # Then
         mocked_topic_constructor.assert_called_once_with(
-            name, writer=mcap_logger.writer, logger=mcap_logger.logger
+            name, writer=mcap_logger.writer
         )
         assert result == mocked_topic
