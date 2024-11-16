@@ -5,11 +5,12 @@ import tempfile
 import time
 from inspect import Traceback
 from pathlib import Path
-from typing import Any
 
 from foxglove_schemas_protobuf.Log_pb2 import Log
 from google.protobuf.timestamp_pb2 import Timestamp
 from mcap_protobuf.writer import Writer
+
+from mcap_logger.topic_logger import Topic
 
 FORMAT = "[{asctime}] [{name}.{funcName}:{lineno}] [{levelname}] {message}"
 LOGGER_ROOT = Path(
@@ -18,45 +19,6 @@ LOGGER_ROOT = Path(
         Path(tempfile.gettempdir()) / "mcap_logger" / "log.mcap",
     ),
 )
-
-
-class Topic:
-    def __init__(
-        self,
-        name: str,
-        writer: Writer,
-        logger: logging.Logger | None = None,
-    ) -> None:
-        """
-        Initializes Topic entity.
-
-        When logger is not provided the topic won't be logged on the console.
-
-        Args:
-            name: The name of the topic.
-            writer: The MCap file writer with protobuf serialization.
-            logger: The console logger.
-        """
-        self.name = name
-        self.writer = writer
-        self.logger = logger
-
-    def write(self, message: Any) -> None:  # noqa: ANN401
-        """
-        Writes topic with protobuf message to the log file.
-
-        Args:
-            message: The protobuf message.
-        """
-        if self.logger:
-            self.logger.debug(f"{self.name} topic:\n{message=}")
-        timestamp = int(time.time() * 1_000_000_000)
-        self.writer.write_message(
-            topic=self.name,
-            message=message,
-            log_time=timestamp,
-            publish_time=timestamp,
-        )
 
 
 class MCAPLogger:
