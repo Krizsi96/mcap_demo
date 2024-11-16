@@ -1,6 +1,4 @@
-from mcap_logger.demo.demo import logger
-
-# Logging Sensor Data
+# Logging Sensor Data (new version)
 
 In this tutorial, we will log sensor data from a simulated thermostat into `thermostat.mcap` file.
 
@@ -32,9 +30,10 @@ After this we should have the following elements in the project's folder:
 We will change the `hello.py` to `thermostat.py` shown below.
 
 ```python title="thermostat.py" linenums="1"
+import logging
 from pathlib import Path
 
-from mcap_logger.mcap_logger import get_logger
+from mcap_logger.mcap_handler import McapHandler
 
 THERMOSTAT_DATA = [
     {"temp": 10, "humid": 70},
@@ -46,13 +45,20 @@ THERMOSTAT_DATA = [
 
 
 def main():
+    logger = logging.getLogger("mcap_logger")
     log_file = Path("thermostat.mcap")
-    logger = get_logger(name="thermostat", log_file=log_file, level="DEBUG")
+    mcap_handler = McapHandler(log_file)
+    mcap_handler.setLevel("DEBUG")
+
+    logger.addHandler(mcap_handler)
+    logger.setLevel("DEBUG")
+
     logger.info("Hello from mcap-logger-tutorial!")
 
 
 if __name__ == "__main__":
     main()
+
 ```
 
 !!! note "Simulated Thermostat"
@@ -137,37 +143,49 @@ thermostat_data = SensorData(temperature=20, humidity=65)
 
 ## Log The Sensor Data
 
-After our first info log message, we will create a for loop with sleeping for 0.5 second to simulate the reading out of
+After our first info log message, we will create a `TopicLogger` instance as following:
+
+```python title="thermostat.py"
+topic_logger = TopicLogger("mcap_logger")
+```
+
+When the `TopicLogger` is initialized with a logger name, it checks if the logger has a `McapHandler` and if yes then it
+will get the reference of its ProtoBuf writer. This means that the `TopicLogger` will use the same file writer to log
+data as the log message logging.
+
+Next, we will create a for loop with sleeping for 0.5 second to simulate the reading out of
 a thermostat sensor.
 
-```python title="thermostat.py" linenums="19"
-    for data in THERMOSTAT_DATA:
+```python title="thermostat.py"
+for data in THERMOSTAT_DATA:
     time.sleep(0.5)
     temperature = data["temp"]
     humidity = data["humid"]
 
     thermostat_data = ThermostatData(temperature=temperature, humidity=humidity)
+
 ```
 
 To log the `thermostat_data`, we need to specify a _Topic_ for our log. In this case, we will call it `/thermostat`
-topic, and we will call the `MCAPLogger`'s `topic` function to create it. _Topics_ have a `write()` function that
-will log the data into the log file. So with calling `logger.topic(<topic_name>).write(<data>)` we can log
-any ProtoBuf data into our log file.
+topic, and we will call the `TopicLogger`'s `topic` function to create it. _Topics_ have a `write()` function that
+will log the data in its argument into the log file. So with calling `topic_logger.topic(<topic_name>).write(<data>)` we
+can log any ProtoBuf data into our log file.
 
 ```python title="thermostat.py"
-logger.topic('/thermostat').write(thermostat_data)
+topic_logger.topic('/thermostat').write(thermostat_data)
 ```
 
 To make it a bit more interesting, let's log a warning message when the `temperature` goes below zero!
 Now our `thermostat.py` script should look like this:
 
-```python title="thermostat.py"
+```python title="thermostat.py" linenums="1"
+import logging
 import time
 from pathlib import Path
 
-from mcap_logger.mcap_logger import get_logger
-
-from thermostat_data_pb2 import ThermostatData
+from examples.thermostat_data_pb2 import ThermostatData
+from mcap_logger.mcap_handler import McapHandler
+from mcap_logger.topic_logger import TopicLogger
 
 THERMOSTAT_DATA = [
     {"temp": 10, "humid": 70},
@@ -179,9 +197,17 @@ THERMOSTAT_DATA = [
 
 
 def main():
+    logger = logging.getLogger("mcap_logger")
     log_file = Path("thermostat.mcap")
-    logger = get_logger(name="thermostat", log_file=log_file, level="DEBUG")
+    mcap_handler = McapHandler(log_file)
+    mcap_handler.setLevel("DEBUG")
+
+    logger.addHandler(mcap_handler)
+    logger.setLevel("DEBUG")
+
     logger.info("Hello from mcap-logger-tutorial!")
+
+    topic_logger = TopicLogger("mcap_logger")
 
     for data in THERMOSTAT_DATA:
         time.sleep(0.5)
@@ -189,7 +215,7 @@ def main():
         humidity = data["humid"]
 
         thermostat_data = ThermostatData(temperature=temperature, humidity=humidity)
-        logger.topic('/thermostat').write(thermostat_data)
+        topic_logger.topic("/thermostat").write(thermostat_data)
 
         if temperature < 0:
             logger.warning("Temperature is below zero!")
@@ -197,6 +223,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 ```
 
 ## Running The Thermostat
@@ -207,39 +234,7 @@ After finishing the `thermostat.py` script, we can run it to generate the log fi
 uv run thermostat.py
 ```
 
-We should see the generated log messages on the console, including the `/thermostat` topic messages.
-
-```
-[2024-11-03 14:18:16,436] [thermostat.main:20] [INFO] Hello from mcap-logger-tutorial!
-[2024-11-03 14:18:16,937] [thermostat.write:50] [DEBUG] /thermostat topic:
-message=temperature: 10
-humidity: 70
-
-[2024-11-03 14:18:17,437] [thermostat.write:50] [DEBUG] /thermostat topic:
-message=temperature: 5
-humidity: 75
-
-[2024-11-03 14:18:17,937] [thermostat.write:50] [DEBUG] /thermostat topic:
-message=temperature: 2
-humidity: 78
-
-[2024-11-03 14:18:18,438] [thermostat.write:50] [DEBUG] /thermostat topic:
-message=temperature: -1
-humidity: 80
-
-[2024-11-03 14:18:18,438] [thermostat.main:31] [WARNING] Temperature is below zero!
-[2024-11-03 14:18:18,938] [thermostat.write:50] [DEBUG] /thermostat topic:
-message=temperature: 3
-humidity: 79
-```
-
-!!! tip "Using less verbose output in the console"
-
-    Notice that you can change the log level of the console logging with the `level` argument for `get_logger` function.
-    This can be useful if you need less verbose log messages in the console (e.g.: only >warning messages) to
-    keep the execution clean. The MCap log is not affected by this parameter.
-
-And we should have the generated `thermostat.mcap` in our project directory.
+When the script is finished running, we should have the generated `thermostat.mcap` in our project directory.
 
 ## Opening Our Log File
 
