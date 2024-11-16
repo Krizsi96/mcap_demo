@@ -31,6 +31,7 @@ nav:
   - API Reference:
       - MCAP Logger: references/mcap_logger_references.md
       - MCAP Handler: references/mcap_handler_references.md
+      - Topic Logger: references/topic_logger_references.md
   - Explanations:
       - Motivation: explanations/motivation.md
       - Foxglove: explanations/foxglove.md
