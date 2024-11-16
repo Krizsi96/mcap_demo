@@ -37,7 +37,7 @@ target-version = "py311"
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = ["D", "W605", "ANN101", "SIM108", "TD003", "FIX002", "COM812", "ISC001", "G004"]
-exclude = ["tests/*"]
+exclude = ["tests/*", "*_pb2.py"]
 
 [tool.semantic_release]
 version_toml = [
