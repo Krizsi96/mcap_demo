@@ -4,7 +4,7 @@ from logging import NullHandlerfrom examples.library import thermostat_monitor
 
 This tutorial will show you how the logging should be handled in libraries.
 
-## Setup Our Tutorial Project
+## Setup our tutorial project
 
 !!! note ""
 
@@ -107,7 +107,7 @@ invalid humidity!
 {'temp': 3, 'humid': 79}
 ```
 
-## Import Our Library Into Our Application
+## Import our library into our application
 
 Now, we will import this simple library into our application, and call its `get_thermostat_data` function in a for-loop.
 We will also simulate the time passing with a `time.sleep` call. After the `log.info` call we should add the following
@@ -124,7 +124,7 @@ all the log messages we created except the library's logs.
 
 However, using `print` statements should be avoided, so we have to create a logger for our library.
 
-## Creating Logger For Our Library
+## Creating logger for our library
 
 !!! info
 
@@ -224,7 +224,7 @@ if __name__ == "__main__":
     this means the only one instance of a logger with a given name exists. When you call the `getLogger` function with
     an existing name, then it will return that singleton.
 
-## Configure The Library Logger From Application
+## Configure the library logger from application
 
 Now, that we have library with logging, we have to configure its logger from our application if we want to use it.
 We have many possibilities on how we could configure the logger, for now, let's say that we want the library to use the
@@ -272,7 +272,7 @@ out what makes sense for them.
 
 !!! warning "Take care to document how your library uses logging - for example, the names of loggers used."
 
-## Adding Data Logging
+## Adding data logging
 
 Following the rule of thumb for how to configure library logging, we can see that we should not let our library populate
 our system with data log files whenever we run it. As before this should be up to the application developer.

@@ -5,7 +5,7 @@ from mcap_logger.mcap_logger import get_logger
 In this tutorial, we will look into how we can combine different log handlers to have console output and MCAP log at the
 same time.
 
-## Setup Our Tutorial Project
+## Setup our tutorial project
 
 !!! note ""
 
@@ -56,7 +56,7 @@ if __name__ == "__main__":
 
 ```
 
-## Configure Console Logging
+## Configure console logging
 
 We can see that in our code, we create a logger instance, and we add our `McapHandler` to it as a handler. A Python
 logger can have multiple handlers. It can be beneficial for an application to log all messages of all severities to a
@@ -112,7 +112,7 @@ if __name__ == "__main__":
 
 ```
 
-## Running The Script
+## Running the script
 
 ```shell
 uv run hello.py
@@ -122,7 +122,7 @@ When we run the command above, we should see that the warning message is printed
 not), and also that we have a `hello.mcap` file in our folder that contains both the warning message and the info
 message.
 
-## Code Structuring
+## Code structuring
 
 Our code is functional, however it is really verbose and suppress the essential parts of the `main` function (the two
 log messages 😄). We can move the technical details of the logger to its own function, so that all the logger

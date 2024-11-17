@@ -2,7 +2,7 @@
 
 In this tutorial, we will log sensor data from a simulated thermostat into `thermostat.mcap` file.
 
-## Setup Our Tutorial Project
+## Setup our tutorial project
 
 !!! note ""
 
@@ -75,7 +75,7 @@ We need to install the ProtoBuf compiler called `protoc` in order to work with P
 
 We can confirm the installation with running the `protoc --version` command in the terminal.
 
-## Creating Our Protocol Format
+## Creating our protocol format
 
 To specify our protocol format for the sensor data, we need to create a `thermostat_data.proto` file in our project
 directory. The definitions in a `.proto` file are simple: we add a _message_ for each data structure we want to
@@ -98,7 +98,7 @@ message ThermostatData {
 
 !!! tip "[Protobuf Python tutorial](https://protobuf.dev/getting-started/pythontutorial/)"
 
-## Compiling Our Protocol Buffers
+## Compiling our protocol buffers
 
 After we defined our protocol, we need to generate the Python classes to read and write messages.
 To do that we will run the `protoc` compiler on our `.proto` file.
@@ -141,7 +141,7 @@ For example, now we can define our `thermostat data` as the following:
 thermostat_data = SensorData(temperature=20, humidity=65)
 ```
 
-## Log The Sensor Data
+## Log the sensor data
 
 After our first info log message, we will create a `TopicLogger` instance as following:
 
@@ -226,7 +226,7 @@ if __name__ == "__main__":
 
 ```
 
-## Running The Thermostat
+## Running the thermostat
 
 After finishing the `thermostat.py` script, we can run it to generate the log file.
 
@@ -236,7 +236,7 @@ uv run thermostat.py
 
 When the script is finished running, we should have the generated `thermostat.mcap` in our project directory.
 
-## Opening Our Log File
+## Opening our log file
 
 Open Foxglove Studio and use the `Open local file...` command to open our `thermostat.mcap` log file.
 We need to [change the layout](https://docs.foxglove.dev/docs/visualization/panels/introduction) so that we have
