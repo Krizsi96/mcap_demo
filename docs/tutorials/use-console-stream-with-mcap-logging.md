@@ -1,5 +1,3 @@
-from mcap_logger.mcap_logger import get_logger
-
 # Use Console Stream with MCAP Logging
 
 In this tutorial, we will look into how we can combine different log handlers to have console output and MCAP log at the
