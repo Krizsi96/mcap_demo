@@ -36,3 +36,16 @@ def test_writing_message_to_topic(mocked_writer):
         log_time=time.time_ns(),
         publish_time=time.time_ns(),
     )
+
+
+def test_writing_message_to_topic_without_write():
+    # Given
+    writer = None
+    topic = Topic("test topic", writer)
+    message = "test message"
+
+    # When
+    topic.write(message)
+
+    # Then
+    # No error
