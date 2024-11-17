@@ -30,13 +30,14 @@ class Topic:
         Args:
             message: The protobuf message.
         """
-        timestamp = time.time_ns()
-        self._writer.write_message(
-            topic=self._name,
-            message=message,
-            log_time=timestamp,
-            publish_time=timestamp,
-        )
+        if self._writer is not None:
+            timestamp = time.time_ns()
+            self._writer.write_message(
+                topic=self._name,
+                message=message,
+                log_time=timestamp,
+                publish_time=timestamp,
+            )
 
 
 class TopicLogger:
