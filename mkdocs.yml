@@ -29,6 +29,7 @@ nav:
       - Logging Sensor Data (old version): tutorials/logging-sensor-data-old.md
       - Logging Sensor Data (new version): tutorials/logging-sensor-data-new.md
       - Use Console Stream With MCAP Logging: tutorials/use-console-stream-with-mcap-logging.md
+      - Using MCAP Logging In Libraries: tutorials/using-mcap-logging-in-libraries.md
   - How-To Guides: how-to-guides.md
   - API Reference:
       - MCAP Logger: references/mcap_logger_references.md
