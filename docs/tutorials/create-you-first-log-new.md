@@ -2,7 +2,7 @@
 
 In this tutorial, we will log a message into a `hello.mcap` file.
 
-## Setup Our Tutorial Project
+## Setup our tutorial project
 
 !!! note ""
 
@@ -41,7 +41,7 @@ Hello from mcap-logger-tutorial!
 
 We will use this "Hello World" program as a base for our tutorial.
 
-## Create Our First Log
+## Create our first log
 
 First, let's import the `logging` package of Python and the `McapHandler` class into the `hello.py` script.
 After we did the import, we will create our `Logger` entity with the `getLogger` function. We will call the logger
@@ -115,7 +115,7 @@ if __name__ == "__main__":
 
 ```
 
-## Create The Log File
+## Create the log file
 
 Now that we made modification to the `hello.py`, we can run our example again and see the
 result.
@@ -132,7 +132,7 @@ Notice that we have a new file in our project directory called `hello.mcap`. Thi
 [Protobuf](https://protobuf.dev/), so we can not open it with a text editor and look at the content of it.
 To do that we will use [Foxglove Studio](https://foxglove.dev/download).
 
-## Open Our Log File
+## Open our log file
 
 Open Foxglove Studio and use the `Open local file...` command to open our `hello.mcap` log file. Our log messages is
 using Foxglove's [Log schema](https://docs.foxglove.dev/docs/visualization/message-schemas/log), and we can visualise it
