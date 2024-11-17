@@ -11,6 +11,6 @@ this.
 
 The goal of this package is...
 
-- to create a logger module that leverages the existing MCAP and Foxglove packages
-- to provide a plugin replacement for standard Python login
-- to provide console logging with configurable log level and handled separately from the file's
+- to create a logger handler that leverages the existing MCAP and Foxglove packages
+- to leverage the configurability of Python
+- to provide a plugin for standard Python loging

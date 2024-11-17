@@ -6,7 +6,7 @@ from freezegun import freeze_time
 from mcap_logger.topic_logger import Topic
 
 
-@mock.patch("mcap_logger.mcap_logger.Writer")
+@mock.patch("mcap_logger.topic_logger.Writer")
 def test_topic_initialisation_with_console_logger(mock_writer):
     # Given
     name = "test name"
@@ -20,7 +20,7 @@ def test_topic_initialisation_with_console_logger(mock_writer):
 
 
 @freeze_time("2022-02-03 14:53:00")
-@mock.patch("mcap_logger.mcap_logger.Writer")
+@mock.patch("mcap_logger.topic_logger.Writer")
 def test_writing_message_to_topic(mocked_writer):
     # Given
     topic = Topic("test topic", mocked_writer)

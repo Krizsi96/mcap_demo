@@ -10,7 +10,7 @@ and use logging method.
 - [Foxglove compatible log messages](explanations/foxglove.md)
 - [Creating MCAP log files](explanations/mcap.md)
 - [ProtoBuf serialisation](explanations/protobuf.md)
-- [Logging level handled separately for file and console logging](explanations/motivation.md)
+- [Python logging best practices](explanations/motivation.md)
 
 ![demo_log_in_foxglove.png](assets/demo_log_in_foxglove.png){ width="400" }
 /// caption

@@ -7,8 +7,7 @@ This python package to provide a standardised, easy to import and use logging me
 The package is...
 
 - a logger module that leverages the existing MCAP and Foxglove packages
-- provides a plugin replacement for standard Python login
-- provides console logging with configurable log level and handled separately from the file's
+- provides a plugin for standard Python loging
 
 Links:
 
@@ -26,14 +25,23 @@ pip install mcap-logger
 ### Creating a simple log
 
 ```python
-# Import the library
-from mcap_logger.mcap_logger import get_logger
+import logging
+from pathlib import Path
 
-# Get MCAP logger instance
-logger = get_logger(__name__)
+from mcap_logger.mcap_handler import McapHandler
 
-logger.info("Hello, World!")
 
+def main():  # noqa: ANN201
+    log_file = Path("hello.mcap")
+
+    mcap_handler = McapHandler(log_file)
+    mcap_handler.setLevel("DEBUG")
+
+    logger = logging.getLogger("mcap_logger")
+    logger.addHandler(mcap_handler)
+    logger.setLevel("DEBUG")
+
+    logger.info("Hello from mcap-logger-tutorial!")
 ```
 
 ### Log Protobuf data
@@ -42,18 +50,20 @@ logger.info("Hello, World!")
 > its syntax: [Protocol Buffers](https://protobuf.dev/)
 
 ```python
-# Import the library
-from mcap_logger.mcap_logger import get_logger
+from sensor_data_pb2 import SensorData
+from mcap_logger.topic_logger import TopicLogger
 
-# Import Protobuf class
-from mcap_logger.demo.sensor_data_pb2 import SensorData
+log_file = Path("hello.mcap")
+mcap_handler = McapHandler(log_file)
+mcap_handler.setLevel("DEBUG")
 
-# Get MCAP logger instance
-logger = get_logger(__name__)
+logger = logging.getLogger("mcap_logger")
+logger.addHandler(mcap_handler)
+logger.setLevel("DEBUG")
 
 # Log Protobuf data
 sensor_message = SensorData(temperature=25, humidity=65)
-logger.topic("/sensor_data").write(sensor_message)
+TopicLogger("mcap_logger").topic("/sensor_data").write(sensor_message)
 
 ```
 
