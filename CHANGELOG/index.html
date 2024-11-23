@@ -1,0 +1,1166 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/billed-cap.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.4.4">
+    
+    
+      
+        <title>Changelog - MCAP-Logger Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6b80c2a2.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#changelog" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MCAP-Logger Docs" class="md-header__button md-logo" aria-label="MCAP-Logger Docs" data-md-component="logo">
+      
+  <img src="../assets/billed-cap.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MCAP-Logger Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Changelog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/8-bit-hunters/mcap_logger" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    8-bit-hunters/mcap_logger
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tutorials/installation/" class="md-tabs__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../how-to-guides/" class="md-tabs__link">
+      How-To Guides
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../references/mcap_handler_references/" class="md-tabs__link">
+        API Reference
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../explanations/motivation/" class="md-tabs__link">
+        Explanations
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      Changelog
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MCAP-Logger Docs" class="md-nav__button md-logo" aria-label="MCAP-Logger Docs" data-md-component="logo">
+      
+  <img src="../assets/billed-cap.svg" alt="logo">
+
+    </a>
+    MCAP-Logger Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/8-bit-hunters/mcap_logger" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    8-bit-hunters/mcap_logger
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/create-you-first-log/" class="md-nav__link">
+        Create Your First Log
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/logging-sensor-data/" class="md-nav__link">
+        Logging Sensor Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/use-console-stream-with-mcap-logging/" class="md-nav__link">
+        Use Console Stream With MCAP Logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/using-mcap-logging-in-libraries/" class="md-nav__link">
+        Using MCAP Logging In Libraries
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/" class="md-nav__link">
+        How-To Guides
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          API Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/mcap_handler_references/" class="md-nav__link">
+        MCAP Handler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/topic_logger_references/" class="md-nav__link">
+        Topic Logger
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Explanations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Explanations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Explanations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanations/motivation/" class="md-nav__link">
+        Motivation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanations/foxglove/" class="md-nav__link">
+        Foxglove
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanations/mcap/" class="md-nav__link">
+        MCAP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanations/protobuf/" class="md-nav__link">
+        ProtoBuf
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Changelog
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Changelog
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#v100-2024-11-23" class="md-nav__link">
+    v1.0.0 (2024-11-23)
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.0.0 (2024-11-23)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other" class="md-nav__link">
+    Other
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v0118-2024-11-15" class="md-nav__link">
+    v0.1.18 (2024-11-15)
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.18 (2024-11-15)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other_1" class="md-nav__link">
+    Other
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#v100-2024-11-23" class="md-nav__link">
+    v1.0.0 (2024-11-23)
+  </a>
+  
+    <nav class="md-nav" aria-label="v1.0.0 (2024-11-23)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other" class="md-nav__link">
+    Other
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v0118-2024-11-15" class="md-nav__link">
+    v0.1.18 (2024-11-15)
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.1.18 (2024-11-15)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#other_1" class="md-nav__link">
+    Other
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+  <a href="https://github.com/8-bit-hunters/mcap_logger/edit/master/docs/CHANGELOG.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="changelog">CHANGELOG</h1>
+<h2 id="v100-2024-11-23">v1.0.0 (2024-11-23)</h2>
+<h3 id="_1"><img alt="💥" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4a5.svg" title=":boom:" /></h3>
+<ul>
+<li>
+<p><img alt="💥" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4a5.svg" title=":boom:" /> Kick out old MCAP logger interface.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/8b57557ae92855e77134ccb5324e51da55e2d2bf"><code>8b57557</code></a>)</p>
+</li>
+<li>
+<p><img alt="💥" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4a5.svg" title=":boom:" /> Make Topic attributes private and remove logger call from Topic.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/58fb89ba3bb80bc034e43c4cfe09151f6f521fcd"><code>58fb89b</code></a>)</p>
+</li>
+</ul>
+<h3 id="_2"><img alt="🐛" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f41b.svg" title=":bug:" /></h3>
+<ul>
+<li><img alt="🐛" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f41b.svg" title=":bug:" /> Attribute error when Topic writer is none.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/da3389929759de660743033b369ad1559f00a8c1"><code>da33899</code></a>)</li>
+</ul>
+<h3 id="_3"><img alt="🥚" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f95a.svg" title=":egg:" /></h3>
+<ul>
+<li>
+<p><img alt="🥚" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f95a.svg" title=":egg:" /> Add examples on how to use logging in application and library.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/2c1ae976f2a3bb447165c78ccb49ab9a653feabf"><code>2c1ae97</code></a>)</p>
+</li>
+<li>
+<p><img alt="🥚" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f95a.svg" title=":egg:" /> Add example of using TopicLogger.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/3ec195d9b96299f62a9f71ba69cdfe3819502a7e"><code>3ec195d</code></a>)</p>
+</li>
+<li>
+<p><img alt="🥚" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f95a.svg" title=":egg:" /> Add example of using the McapHandler.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/ccdcfdd439f5f571d5c48e54852bae9e39a14555"><code>ccdcfdd</code></a>)</p>
+</li>
+</ul>
+<h3 id="_4"><img alt="✨" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2728.svg" title=":sparkles:" /></h3>
+<ul>
+<li>
+<p><img alt="✨" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2728.svg" title=":sparkles:" /> Create TopicLogger class to handle data logging.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/5d5f9d6c77ae1249844e47973012ddca4332632c"><code>5d5f9d6</code></a>)</p>
+</li>
+<li>
+<p><img alt="✨" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2728.svg" title=":sparkles:" /> Create a logging handler for MCAP files.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/803fd42d1ac2766333117daef7747e31e38290a6"><code>803fd42</code></a>)</p>
+</li>
+</ul>
+<h3 id="other">Other</h3>
+<ul>
+<li>
+<p><img alt="💚" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f49a.svg" title=":green_heart:" /> Fix CI release builds older version
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/ecd70187fb40776f8985a5318357b6792ea6bb0b"><code>ecd7018</code></a>)</p>
+</li>
+<li>
+<p><img alt="👷" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f477.svg" title=":construction_worker:" /> Only publish to PyPI when new release is created
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/2582b2f9b8064b93fd47e41e082a57b98181c17a"><code>2582b2f</code></a>)</p>
+</li>
+<li>
+<p><img alt="📝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4dd.svg" title=":memo:" /> Update links in README.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/7868ace32032f6c206ed7dc82056bae6fc8d9121"><code>7868ace</code></a>)</p>
+</li>
+<li>
+<p><img alt="📝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4dd.svg" title=":memo:" /> Add badges to README.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/8966936900d0722648a22bb442aff6c3c8db1ab0"><code>8966936</code></a>)</p>
+</li>
+<li>
+<p><img alt="📝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4dd.svg" title=":memo:" /> Fix documentation mistake.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/26a7b8b0a22acea6c7c84ea39e24d3ee69c1861f"><code>26a7b8b</code></a>)</p>
+</li>
+<li>
+<p><img alt="🎨" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f3a8.svg" title=":art:" /> Change documentation Header style.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/1cbc35bb53748ee191c6274a1b23f919c8432dc7"><code>1cbc35b</code></a>)</p>
+</li>
+<li>
+<p><img alt="📝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4dd.svg" title=":memo:" /> Add tutorial on how to do library logging.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/3a8781064970a02690aa9184da9e0d4772efd5a3"><code>3a87810</code></a>)</p>
+</li>
+<li>
+<p><img alt="📝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4dd.svg" title=":memo:" /> Add tutorial to learn how to configure both console and MCAP logging for a logger.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/0ef44947daec5c6abd8288e82ae6e114367bd68a"><code>0ef4494</code></a>)</p>
+</li>
+<li>
+<p><img alt="📝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4dd.svg" title=":memo:" /> Create updated documentation for using the TopicLogger.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/e6d2b2f17bf7306668ac2c646ba6909db0bc17b8"><code>e6d2b2f</code></a>)</p>
+</li>
+<li>
+<p><img alt="🚚" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f69a.svg" title=":truck:" /> Move integration test resources to tests folder.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/ef9d97c3692fd7beba3cdff97ed7c12be2e75f33"><code>ef9d97c</code></a>)</p>
+</li>
+<li>
+<p><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2705.svg" title=":white_check_mark:" /> Add integration test for data logging with TopicLogger.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/4c19bf19eff941bfbb3b55e0f4816326997dda6f"><code>4c19bf1</code></a>)</p>
+</li>
+<li>
+<p><img alt="🔧" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f527.svg" title=":wrench:" /> Change Ruff configuration to exclude checks on ProtoBuf artifacts.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/0c6cd16cc33e2443fd1702130106f2d7a3222e10"><code>0c6cd16</code></a>)</p>
+</li>
+<li>
+<p><img alt="🙈" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f648.svg" title=":see_no_evil:" /> Stop ignoring protobuf artifacts.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/1c15b309a81d2d32a8a8dd23e6fbd617011ec69d"><code>1c15b30</code></a>)</p>
+</li>
+<li>
+<p><img alt="📝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4dd.svg" title=":memo:" /> Add API reference for topic logger.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/1e2f641ffd8b7f797bd283c822de159814adf17c"><code>1e2f641</code></a>)</p>
+</li>
+<li>
+<p><img alt="💡" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4a1.svg" title=":bulb:" /> Document the TopicLogger with docstrings.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/1b127670d963165a47cb29683e1fe5868f920e28"><code>1b12767</code></a>)</p>
+</li>
+<li>
+<p><img alt="♻" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/267b.svg" title=":recycle:" /> Use time_ns() function instead of time().
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/285b60ccb5664bfa6e41c83bae5eefa1c755a693"><code>285b60c</code></a>)</p>
+</li>
+<li>
+<p><img alt="🎨" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f3a8.svg" title=":art:" /> Move Topic class to the same script as TopicLogger.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/93d9f154d0ac68006ed832582d6730007f5adf5c"><code>93d9f15</code></a>)</p>
+</li>
+<li>
+<p><img alt="📝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4dd.svg" title=":memo:" /> Added documentation about how to create your first log with McapHandler.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/26d309616f5654161c3222eb68e6b2cf32616907"><code>26d3096</code></a>)</p>
+</li>
+<li>
+<p><img alt="📝" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f4dd.svg" title=":memo:" /> Update documentation of API references.
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/a269048f28243ff5672154162c781752c32cb657"><code>a269048</code></a>)</p>
+</li>
+<li>
+<p><img alt="👷" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f477.svg" title=":construction_worker:" /> add workflow for semantic versioning
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/124f1aa2e6133bfdc513d93016ce851d97c0a695"><code>124f1aa</code></a>)</p>
+</li>
+<li>
+<p><img alt="🔧" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f527.svg" title=":wrench:" /> configure semantic-release
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/7e62d9dd7b4ccba8b119170dc0cd6d5d8e999ddd"><code>7e62d9d</code></a>)</p>
+</li>
+<li>
+<p><img alt="➕" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2795.svg" title=":heavy_plus_sign:" /> remove pypi-version dependency
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/4a5c631a7b9bed4a83bc2564fbe7d28f636e092c"><code>4a5c631</code></a>)</p>
+</li>
+<li>
+<p><img alt="➖" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/2796.svg" title=":heavy_minus_sign:" /> remove pypi-version dependency
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/6412f832a42c5b39896479cf5230962c92bc1d89"><code>6412f83</code></a>)</p>
+</li>
+</ul>
+<h2 id="v0118-2024-11-15">v0.1.18 (2024-11-15)</h2>
+<h3 id="other_1">Other</h3>
+<ul>
+<li>[pre-commit.ci] pre-commit autoupdate
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/f1b71879867fe9f14311606c7f096b280f6749c7"><code>f1b7187</code></a>)</li>
+</ul>
+<p>updates: - <a href="https://github.com/astral-sh/ruff-pre-commit/compare/v0.7.2...v0.7.3">github.com/astral-sh/ruff-pre-commit: v0.7.2 →
+  v0.7.3</a></p>
+<ul>
+<li>[pre-commit.ci] pre-commit autoupdate
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/f3a01921258589eccd23a0a66b519b5bd988a2b3"><code>f3a0192</code></a>)</li>
+</ul>
+<p>updates: - <a href="https://github.com/pre-commit/pre-commit-hooks/compare/v2.3.0...v5.0.0">github.com/pre-commit/pre-commit-hooks: v2.3.0 →
+  v5.0.0</a> -
+  <a href="https://github.com/astral-sh/ruff-pre-commit/compare/v0.6.9...v0.7.2">github.com/astral-sh/ruff-pre-commit: v0.6.9 →
+  v0.7.2</a></p>
+<ul>
+<li>
+<p>Ci: only trigger auto documentation on main branch
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/2be409ced83e67b1e635d2dc185eb115b8052cbf"><code>2be409c</code></a>)</p>
+</li>
+<li>
+<p>Chore: update project urls
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/b1cc2fd1e2bac033ce3e178aaa22a35dda48e205"><code>b1cc2fd</code></a>)</p>
+</li>
+<li>
+<p>Ci: auto publish documentation on github pages
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/b0df5d849513bbe623bf82bb8fd26ee7a7fae654"><code>b0df5d8</code></a>)</p>
+</li>
+<li>
+<p>Docs: create documentation with mkdocs
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/fe863277de2f4b2fb0bee99790bf6100622ee13a"><code>fe86327</code></a>)</p>
+</li>
+<li>
+<p>Docs: add tutorial for logging sensor data
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/fad79dedfeee3db494755bcc9b2deb605bd6782f"><code>fad79de</code></a>)</p>
+</li>
+<li>
+<p>Docs: add tutorials for installation and first log creation
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/6a6b2c2765bf2067b8675c0c9329857270f7b6f3"><code>6a6b2c2</code></a>)</p>
+</li>
+<li>
+<p>Docs: add github repo url link
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/ebdde1267721e34068a99f98eceb5433233f6960"><code>ebdde12</code></a>)</p>
+</li>
+<li>
+<p>Ci: run testing only if python files are changed
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/71a1482524583c4900e7d4684d665831e6c814a0"><code>71a1482</code></a>)</p>
+</li>
+<li>
+<p>Fix: wrong indentation in publishing workflow
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/72feee2f34cdf69ef68410efa3eb11bcefb96450"><code>72feee2</code></a>)</p>
+</li>
+<li>
+<p>Ci: add github workflow for publishing package
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/02b1a9806ed07ed786f3180d75df92dd4ff9a920"><code>02b1a98</code></a>)</p>
+</li>
+<li>
+<p>Ci: add github workflow for testing
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/d57245f622fdfb0640e5213f5754d7a0e5ff777d"><code>d57245f</code></a>)</p>
+</li>
+<li>
+<p>Ci: add test cases to the project
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/81b40a9e50753b28b3dfb19694d65495c8ea9e7c"><code>81b40a9</code></a>)</p>
+</li>
+<li>
+<p>Chore: create LICENSE
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/60e9fa439b58358763701fa61ce8c20b22aa7550"><code>60e9fa4</code></a>)</p>
+</li>
+<li>
+<p>Docs: add documentation to the package
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/a111f3c2abe21c007a787626c7e697c8baeb43b7"><code>a111f3c</code></a>)</p>
+</li>
+<li>
+<p>Fix: #2 console log shows the wrong function
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/f5c4653baf1fc02fae92a81e1188e98a417fbf40"><code>f5c4653</code></a>)</p>
+</li>
+<li>
+<p>Chore: fix ruff errors
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/c0b6faeedcfef586bbe0e08eb43666b2c8ee30ed"><code>c0b6fae</code></a>)</p>
+</li>
+<li>
+<p>Feat: log mcap messages on the console
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/cf55a1629bc26184c5b8a50deb16f4114f691661"><code>cf55a16</code></a>)</p>
+</li>
+<li>
+<p>Feat: define default logging path
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/a8e926ad5746c10462404bb26ca32edbc4b3f2f5"><code>a8e926a</code></a>)</p>
+</li>
+<li>
+<p>Refactor: change namings
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/b66f0be37bd8c2925fe6b72cd40254e1c4879588"><code>b66f0be</code></a>)</p>
+</li>
+<li>
+<p>Fix: wrong log level calls
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/1092efd2d0f33364142f6294e4b7c793caf6e61b"><code>1092efd</code></a>)</p>
+</li>
+<li>
+<p>Chore: add pre-commit and ruff formating
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/06ddc9715eb03167a106792b7c437e8236ab9c37"><code>06ddc97</code></a>)</p>
+</li>
+<li>
+<p>Feature: extend logging levels
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/698a3dfe067e751847f5156818a262c492000a26"><code>698a3df</code></a>)</p>
+</li>
+<li>
+<p>Refactor: create MCAP logger class to handle logs and topics
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/d78d49ff6d30cd4316f28ea67ceed849e630fa16"><code>d78d49f</code></a>)</p>
+</li>
+<li>
+<p>Refactor: create classes for logs and topics
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/849dce60ca18daafe3b22858503c295ce8254cb7"><code>849dce6</code></a>)</p>
+</li>
+<li>
+<p>Feat: sensor example with logging using protobuf
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/51330da705dbc030eddef4cb9610281e49d64db9"><code>51330da</code></a>)</p>
+</li>
+<li>
+<p>Feat: use protobuf
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/ba00e07b68316304a6d9d932555888f4393a1202"><code>ba00e07</code></a>)</p>
+</li>
+<li>
+<p>Feat: logging sample data into mcap file
+  (<a href="https://github.com/8-bit-hunters/mcap_logger/commit/43c56d101aa0ab4fb48afbb968694e1c026613d6"><code>43c56d1</code></a>)</p>
+</li>
+</ul>
+
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../explanations/protobuf/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ProtoBuf" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              ProtoBuf
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs"], "search": "../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.2ab50757.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

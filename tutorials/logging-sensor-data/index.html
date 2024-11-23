@@ -1,0 +1,1170 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/billed-cap.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.4.4">
+    
+    
+      
+        <title>Logging Sensor Data - MCAP-Logger Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6b80c2a2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#logging-sensor-data-new-version" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MCAP-Logger Docs" class="md-header__button md-logo" aria-label="MCAP-Logger Docs" data-md-component="logo">
+      
+  <img src="../../assets/billed-cap.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MCAP-Logger Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Logging Sensor Data
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/8-bit-hunters/mcap_logger" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    8-bit-hunters/mcap_logger
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../installation/" class="md-tabs__link md-tabs__link--active">
+        Getting Started
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../how-to-guides/" class="md-tabs__link">
+      How-To Guides
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../references/mcap_handler_references/" class="md-tabs__link">
+        API Reference
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../explanations/motivation/" class="md-tabs__link">
+        Explanations
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../CHANGELOG/" class="md-tabs__link">
+      Changelog
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MCAP-Logger Docs" class="md-nav__button md-logo" aria-label="MCAP-Logger Docs" data-md-component="logo">
+      
+  <img src="../../assets/billed-cap.svg" alt="logo">
+
+    </a>
+    MCAP-Logger Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/8-bit-hunters/mcap_logger" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    8-bit-hunters/mcap_logger
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../create-you-first-log/" class="md-nav__link">
+        Create Your First Log
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Logging Sensor Data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Logging Sensor Data
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup-our-tutorial-project" class="md-nav__link">
+    Setup our tutorial project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-protobuf" class="md-nav__link">
+    Installing ProtoBuf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-our-protocol-format" class="md-nav__link">
+    Creating our protocol format
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compiling-our-protocol-buffers" class="md-nav__link">
+    Compiling our protocol buffers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importing-protobuf" class="md-nav__link">
+    Importing ProtoBuf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-the-sensor-data" class="md-nav__link">
+    Log the sensor data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-thermostat" class="md-nav__link">
+    Running the thermostat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opening-our-log-file" class="md-nav__link">
+    Opening our log file
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../use-console-stream-with-mcap-logging/" class="md-nav__link">
+        Use Console Stream With MCAP Logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-mcap-logging-in-libraries/" class="md-nav__link">
+        Using MCAP Logging In Libraries
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to-guides/" class="md-nav__link">
+        How-To Guides
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          API Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/mcap_handler_references/" class="md-nav__link">
+        MCAP Handler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/topic_logger_references/" class="md-nav__link">
+        Topic Logger
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Explanations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Explanations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Explanations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanations/motivation/" class="md-nav__link">
+        Motivation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanations/foxglove/" class="md-nav__link">
+        Foxglove
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanations/mcap/" class="md-nav__link">
+        MCAP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanations/protobuf/" class="md-nav__link">
+        ProtoBuf
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup-our-tutorial-project" class="md-nav__link">
+    Setup our tutorial project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-protobuf" class="md-nav__link">
+    Installing ProtoBuf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-our-protocol-format" class="md-nav__link">
+    Creating our protocol format
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compiling-our-protocol-buffers" class="md-nav__link">
+    Compiling our protocol buffers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importing-protobuf" class="md-nav__link">
+    Importing ProtoBuf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-the-sensor-data" class="md-nav__link">
+    Log the sensor data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-thermostat" class="md-nav__link">
+    Running the thermostat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opening-our-log-file" class="md-nav__link">
+    Opening our log file
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+  <a href="https://github.com/8-bit-hunters/mcap_logger/edit/master/docs/tutorials/logging-sensor-data.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="logging-sensor-data-new-version">Logging Sensor Data (new version)</h1>
+<p>In this tutorial, we will log sensor data from a simulated thermostat into <code>thermostat.mcap</code> file.</p>
+<h2 id="setup-our-tutorial-project">Setup our tutorial project</h2>
+<div class="admonition note">
+<p>In this tutorial we will use <code>uv</code>.</p>
+</div>
+<p>Let's <a href="https://docs.astral.sh/uv/guides/projects/">create a new uv project</a> and
+<a href="../installation/">add the MCAP Logger</a> package as dependency.</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>uv<span class="w"> </span>init<span class="w"> </span>mcap_logger_tutorial
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>mcap_logger_tutorial
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>uv<span class="w"> </span>add<span class="w"> </span>mcap-logger
+</span></code></pre></div>
+<p>After this we should have the following elements in the project's folder:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>.
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── .python-version
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├── README.md
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>├── hello.py
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>└── pyproject.toml
+</span></code></pre></div>
+<p>We will change the <code>hello.py</code> to <code>thermostat.py</code> shown below.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">thermostat.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">logging</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="kn">from</span> <span class="nn">mcap_logger.mcap_handler</span> <span class="kn">import</span> <span class="n">McapHandler</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="n">THERMOSTAT_DATA</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">70</span><span class="p">},</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">75</span><span class="p">},</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">},</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">},</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">79</span><span class="p">},</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="p">]</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a>    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;mcap_logger&quot;</span><span class="p">)</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a>    <span class="n">log_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;thermostat.mcap&quot;</span><span class="p">)</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a>    <span class="n">mcap_handler</span> <span class="o">=</span> <span class="n">McapHandler</span><span class="p">(</span><span class="n">log_file</span><span class="p">)</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a>    <span class="n">mcap_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">mcap_handler</span><span class="p">)</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Hello from mcap-logger-tutorial!&quot;</span><span class="p">)</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28"></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Simulated Thermostat</p>
+<p>The thermostat readings comes from the THERMOSTAT_DATA dictionary.</p>
+</div>
+<h2 id="installing-protobuf">Installing ProtoBuf</h2>
+<p><a href="https://protobuf.dev/">Protocol Buffers</a> (a.k.a ProtoBuf) are Google's language-neutral mechanism for serializing
+structured data. It is used as the serialisation protocol for <code>mcap-logger</code>.</p>
+<p>We need to install the ProtoBuf compiler called <code>protoc</code> in order to work with ProtoBuf.
+<a href="https://protobuf.dev/downloads/">Download the package</a> and follow the instructions in the <code>README</code>.</p>
+<p>We can confirm the installation with running the <code>protoc --version</code> command in the terminal.</p>
+<h2 id="creating-our-protocol-format">Creating our protocol format</h2>
+<p>To specify our protocol format for the sensor data, we need to create a <code>thermostat_data.proto</code> file in our project
+directory. The definitions in a <code>.proto</code> file are simple: we add a <em>message</em> for each data structure we want to
+serialise, then specify a name and a type for each field in the message.</p>
+<p>Our thermostat has <code>temperature</code> and <code>humidity</code> readings, so our <code>.proto</code> file will look like the following.</p>
+<div class="language-protobuf highlight"><span class="filename">thermostat_data.proto</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">message</span><span class="w"> </span><span class="nc">ThermostatData</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">temperature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">humidity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">ProtoBuf Syntax</p>
+<p>This is the <a href="https://protobuf.dev/programming-guides/proto3/">Language Guide</a> for proto3.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title"><a href="https://protobuf.dev/getting-started/pythontutorial/">Protobuf Python tutorial</a></p>
+</div>
+<h2 id="compiling-our-protocol-buffers">Compiling our protocol buffers</h2>
+<p>After we defined our protocol, we need to generate the Python classes to read and write messages.
+To do that we will run the <code>protoc</code> compiler on our <code>.proto</code> file.</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>protoc<span class="w"> </span>--python_out<span class="o">=</span>.<span class="w"> </span>thermostat_data.proto
+</span></code></pre></div>
+<p>This will generate a new Python file called <code>thermostat_data_pb2.py</code> in our project directory.</p>
+<p>Our project directory should look something like this by now:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>.
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>├── .python-version
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>├── README.md
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>├── hello.py
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>├── pyproject.toml
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>├── thermostat_data.proto
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>└── thermostat_data_pb2.py
+</span></code></pre></div>
+<h2 id="importing-protobuf">Importing ProtoBuf</h2>
+<p>To create a <code>thermostat data</code> in our <code>hello.py</code> script, we need to import the <code>ThermostatData</code> class from the generated
+<code>thermostat_data_pb2.py</code>.</p>
+<div class="language-python highlight"><span class="filename">thermostat.py</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span> <span class="nn">thermostat_data_pb2</span> <span class="kn">import</span> <span class="n">ThermostatData</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In some cases the import can confuse the linter and generate <em>"Cannot find reference"</em> errors. However the
+interpreter will work with this import. This can be resolved if you add plugins to your IDE for ProtoBuf support.</p>
+</div>
+<p>For example, now we can define our <code>thermostat data</code> as the following:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">thermostat_data</span> <span class="o">=</span> <span class="n">SensorData</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">humidity</span><span class="o">=</span><span class="mi">65</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="log-the-sensor-data">Log the sensor data</h2>
+<p>After our first info log message, we will create a <code>TopicLogger</code> instance as following:</p>
+<div class="language-python highlight"><span class="filename">thermostat.py</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">topic_logger</span> <span class="o">=</span> <span class="n">TopicLogger</span><span class="p">(</span><span class="s2">&quot;mcap_logger&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>When the <code>TopicLogger</code> is initialized with a logger name, it checks if the logger has a <code>McapHandler</code> and if yes then it
+will get the reference of its ProtoBuf writer. This means that the <code>TopicLogger</code> will use the same file writer to log
+data as the log message logging.</p>
+<p>Next, we will create a for loop with sleeping for 0.5 second to simulate the reading out of
+a thermostat sensor.</p>
+<div class="language-python highlight"><span class="filename">thermostat.py</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">THERMOSTAT_DATA</span><span class="p">:</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="n">temperature</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;temp&quot;</span><span class="p">]</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">humidity</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;humid&quot;</span><span class="p">]</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    <span class="n">thermostat_data</span> <span class="o">=</span> <span class="n">ThermostatData</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span> <span class="n">humidity</span><span class="o">=</span><span class="n">humidity</span><span class="p">)</span>
+</span></code></pre></div>
+<p>To log the <code>thermostat_data</code>, we need to specify a <em>Topic</em> for our log. In this case, we will call it <code>/thermostat</code>
+topic, and we will call the <code>TopicLogger</code>'s <code>topic</code> function to create it. <em>Topics</em> have a <code>write()</code> function that
+will log the data in its argument into the log file. So with calling <code>topic_logger.topic(&lt;topic_name&gt;).write(&lt;data&gt;)</code> we
+can log any ProtoBuf data into our log file.</p>
+<div class="language-python highlight"><span class="filename">thermostat.py</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">topic_logger</span><span class="o">.</span><span class="n">topic</span><span class="p">(</span><span class="s1">&#39;/thermostat&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">thermostat_data</span><span class="p">)</span>
+</span></code></pre></div>
+<p>To make it a bit more interesting, let's log a warning message when the <code>temperature</code> goes below zero!
+Now our <code>thermostat.py</code> script should look like this:</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">thermostat.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span>
+<span class="normal"><a href="#__codelineno-11-17">17</a></span>
+<span class="normal"><a href="#__codelineno-11-18">18</a></span>
+<span class="normal"><a href="#__codelineno-11-19">19</a></span>
+<span class="normal"><a href="#__codelineno-11-20">20</a></span>
+<span class="normal"><a href="#__codelineno-11-21">21</a></span>
+<span class="normal"><a href="#__codelineno-11-22">22</a></span>
+<span class="normal"><a href="#__codelineno-11-23">23</a></span>
+<span class="normal"><a href="#__codelineno-11-24">24</a></span>
+<span class="normal"><a href="#__codelineno-11-25">25</a></span>
+<span class="normal"><a href="#__codelineno-11-26">26</a></span>
+<span class="normal"><a href="#__codelineno-11-27">27</a></span>
+<span class="normal"><a href="#__codelineno-11-28">28</a></span>
+<span class="normal"><a href="#__codelineno-11-29">29</a></span>
+<span class="normal"><a href="#__codelineno-11-30">30</a></span>
+<span class="normal"><a href="#__codelineno-11-31">31</a></span>
+<span class="normal"><a href="#__codelineno-11-32">32</a></span>
+<span class="normal"><a href="#__codelineno-11-33">33</a></span>
+<span class="normal"><a href="#__codelineno-11-34">34</a></span>
+<span class="normal"><a href="#__codelineno-11-35">35</a></span>
+<span class="normal"><a href="#__codelineno-11-36">36</a></span>
+<span class="normal"><a href="#__codelineno-11-37">37</a></span>
+<span class="normal"><a href="#__codelineno-11-38">38</a></span>
+<span class="normal"><a href="#__codelineno-11-39">39</a></span>
+<span class="normal"><a href="#__codelineno-11-40">40</a></span>
+<span class="normal"><a href="#__codelineno-11-41">41</a></span>
+<span class="normal"><a href="#__codelineno-11-42">42</a></span>
+<span class="normal"><a href="#__codelineno-11-43">43</a></span>
+<span class="normal"><a href="#__codelineno-11-44">44</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kn">import</span> <span class="nn">logging</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="kn">import</span> <span class="nn">time</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="kn">from</span> <span class="nn">examples.thermostat_data_pb2</span> <span class="kn">import</span> <span class="n">ThermostatData</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="kn">from</span> <span class="nn">mcap_logger.mcap_handler</span> <span class="kn">import</span> <span class="n">McapHandler</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="kn">from</span> <span class="nn">mcap_logger.topic_logger</span> <span class="kn">import</span> <span class="n">TopicLogger</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="n">THERMOSTAT_DATA</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">70</span><span class="p">},</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">75</span><span class="p">},</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">},</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">},</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">79</span><span class="p">},</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="p">]</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16"></a>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17"></a>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19"></a>    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;mcap_logger&quot;</span><span class="p">)</span>
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20"></a>    <span class="n">log_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;thermostat.mcap&quot;</span><span class="p">)</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21"></a>    <span class="n">mcap_handler</span> <span class="o">=</span> <span class="n">McapHandler</span><span class="p">(</span><span class="n">log_file</span><span class="p">)</span>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22"></a>    <span class="n">mcap_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23"></a>
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">mcap_handler</span><span class="p">)</span>
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26"></a>
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Hello from mcap-logger-tutorial!&quot;</span><span class="p">)</span>
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28"></a>
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29"></a>    <span class="n">topic_logger</span> <span class="o">=</span> <span class="n">TopicLogger</span><span class="p">(</span><span class="s2">&quot;mcap_logger&quot;</span><span class="p">)</span>
+</span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30"></a>
+</span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31"></a>    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">THERMOSTAT_DATA</span><span class="p">:</span>
+</span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32"></a>        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33"></a>        <span class="n">temperature</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;temp&quot;</span><span class="p">]</span>
+</span><span id="__span-11-34"><a id="__codelineno-11-34" name="__codelineno-11-34"></a>        <span class="n">humidity</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;humid&quot;</span><span class="p">]</span>
+</span><span id="__span-11-35"><a id="__codelineno-11-35" name="__codelineno-11-35"></a>
+</span><span id="__span-11-36"><a id="__codelineno-11-36" name="__codelineno-11-36"></a>        <span class="n">thermostat_data</span> <span class="o">=</span> <span class="n">ThermostatData</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span> <span class="n">humidity</span><span class="o">=</span><span class="n">humidity</span><span class="p">)</span>
+</span><span id="__span-11-37"><a id="__codelineno-11-37" name="__codelineno-11-37"></a>        <span class="n">topic_logger</span><span class="o">.</span><span class="n">topic</span><span class="p">(</span><span class="s2">&quot;/thermostat&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">thermostat_data</span><span class="p">)</span>
+</span><span id="__span-11-38"><a id="__codelineno-11-38" name="__codelineno-11-38"></a>
+</span><span id="__span-11-39"><a id="__codelineno-11-39" name="__codelineno-11-39"></a>        <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-11-40"><a id="__codelineno-11-40" name="__codelineno-11-40"></a>            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Temperature is below zero!&quot;</span><span class="p">)</span>
+</span><span id="__span-11-41"><a id="__codelineno-11-41" name="__codelineno-11-41"></a>
+</span><span id="__span-11-42"><a id="__codelineno-11-42" name="__codelineno-11-42"></a>
+</span><span id="__span-11-43"><a id="__codelineno-11-43" name="__codelineno-11-43"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span id="__span-11-44"><a id="__codelineno-11-44" name="__codelineno-11-44"></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="running-the-thermostat">Running the thermostat</h2>
+<p>After finishing the <code>thermostat.py</code> script, we can run it to generate the log file.</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>uv<span class="w"> </span>run<span class="w"> </span>thermostat.py
+</span></code></pre></div>
+<p>When the script is finished running, we should have the generated <code>thermostat.mcap</code> in our project directory.</p>
+<h2 id="opening-our-log-file">Opening our log file</h2>
+<p>Open Foxglove Studio and use the <code>Open local file...</code> command to open our <code>thermostat.mcap</code> log file.
+We need to <a href="https://docs.foxglove.dev/docs/visualization/panels/introduction">change the layout</a> so that we have
+a <em>Log</em> panel and a <em>Plot</em> panel.</p>
+<p>In the settings we will configure the <em>Log</em> panel to use the <code>/log</code> topic, and for the <em>Plot</em> panel we will add two
+<em>Series</em>: one for the <code>/thermostat.humidity</code> and one for the <code>/thermostat.temperature</code>.</p>
+<figure>
+<p><a class="glightbox" href="../../assets/log_panel_configuration.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="log_panel_configuration.png" src="../../assets/log_panel_configuration.png" width="300" /></a></p>
+<figcaption>
+<p>log panel settings</p>
+</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" href="../../assets/plot_panel_configuration.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="plot_panel_configuration.png" src="../../assets/plot_panel_configuration.png" width="300" /></a></p>
+<figcaption>
+<p>plot panel settings</p>
+</figcaption>
+</figure>
+<p>After this, we can play back the log and see the visualisation of the thermostat data alongside with the log messages.</p>
+<figure>
+<p><a class="glightbox" href="../../assets/thermostat_foxglove.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="thermostat_foxglove.png" src="../../assets/thermostat_foxglove.png" width="600" /></a></p>
+<figcaption>
+<p>thermostat log in Foxglove</p>
+</figcaption>
+</figure>
+<p>Now you know how to make full use of the <code>mcap-logger</code> package. <img alt="🧑‍🎓" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f9d1-200d-1f393.svg" title=":student:" /></p>
+
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../create-you-first-log/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Create Your First Log" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Create Your First Log
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../use-console-stream-with-mcap-logging/" class="md-footer__link md-footer__link--next" aria-label="Next: Use Console Stream With MCAP Logging" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Use Console Stream With MCAP Logging
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.2ab50757.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

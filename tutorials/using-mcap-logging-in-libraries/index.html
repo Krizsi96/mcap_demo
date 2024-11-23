@@ -1,0 +1,1526 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/billed-cap.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.4.4">
+    
+    
+      
+        <title>Using MCAP Logging In Libraries - MCAP-Logger Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6b80c2a2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#using-mcap-logging-in-libraries" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MCAP-Logger Docs" class="md-header__button md-logo" aria-label="MCAP-Logger Docs" data-md-component="logo">
+      
+  <img src="../../assets/billed-cap.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MCAP-Logger Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Using MCAP Logging In Libraries
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="red"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/8-bit-hunters/mcap_logger" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    8-bit-hunters/mcap_logger
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../installation/" class="md-tabs__link md-tabs__link--active">
+        Getting Started
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../how-to-guides/" class="md-tabs__link">
+      How-To Guides
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../references/mcap_handler_references/" class="md-tabs__link">
+        API Reference
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../explanations/motivation/" class="md-tabs__link">
+        Explanations
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../CHANGELOG/" class="md-tabs__link">
+      Changelog
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MCAP-Logger Docs" class="md-nav__button md-logo" aria-label="MCAP-Logger Docs" data-md-component="logo">
+      
+  <img src="../../assets/billed-cap.svg" alt="logo">
+
+    </a>
+    MCAP-Logger Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/8-bit-hunters/mcap_logger" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    8-bit-hunters/mcap_logger
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../create-you-first-log/" class="md-nav__link">
+        Create Your First Log
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging-sensor-data/" class="md-nav__link">
+        Logging Sensor Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../use-console-stream-with-mcap-logging/" class="md-nav__link">
+        Use Console Stream With MCAP Logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Using MCAP Logging In Libraries
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Using MCAP Logging In Libraries
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup-our-tutorial-project" class="md-nav__link">
+    Setup our tutorial project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-our-library-into-our-application" class="md-nav__link">
+    Import our library into our application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-logger-for-our-library" class="md-nav__link">
+    Creating logger for our library
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-the-library-logger-from-application" class="md-nav__link">
+    Configure the library logger from application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-data-logging" class="md-nav__link">
+    Adding data logging
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding data logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-logging-from-application" class="md-nav__link">
+    Data logging from application
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-logging-from-library" class="md-nav__link">
+    Data logging from library
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to-guides/" class="md-nav__link">
+        How-To Guides
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          API Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/mcap_handler_references/" class="md-nav__link">
+        MCAP Handler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/topic_logger_references/" class="md-nav__link">
+        Topic Logger
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Explanations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Explanations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Explanations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanations/motivation/" class="md-nav__link">
+        Motivation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanations/foxglove/" class="md-nav__link">
+        Foxglove
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanations/mcap/" class="md-nav__link">
+        MCAP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanations/protobuf/" class="md-nav__link">
+        ProtoBuf
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CHANGELOG/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup-our-tutorial-project" class="md-nav__link">
+    Setup our tutorial project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-our-library-into-our-application" class="md-nav__link">
+    Import our library into our application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-logger-for-our-library" class="md-nav__link">
+    Creating logger for our library
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-the-library-logger-from-application" class="md-nav__link">
+    Configure the library logger from application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-data-logging" class="md-nav__link">
+    Adding data logging
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding data logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-logging-from-application" class="md-nav__link">
+    Data logging from application
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-logging-from-library" class="md-nav__link">
+    Data logging from library
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+  <a href="https://github.com/8-bit-hunters/mcap_logger/edit/master/docs/tutorials/using-mcap-logging-in-libraries.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<p>from logging import NullHandlerfrom examples.library import thermostat_monitor</p>
+<h1 id="using-mcap-logging-in-libraries">Using MCAP Logging in Libraries</h1>
+<p>This tutorial will show you how the logging should be handled in libraries.</p>
+<h2 id="setup-our-tutorial-project">Setup our tutorial project</h2>
+<div class="admonition note">
+<p>In this tutorial we will use <code>uv</code>.</p>
+</div>
+<p>Let's <a href="https://docs.astral.sh/uv/guides/projects/">create a new uv project</a> and
+<a href="../installation/">add the MCAP Logger</a> package as dependency.</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>uv<span class="w"> </span>init<span class="w"> </span>mcap_logger_tutorial
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>mcap_logger_tutorial
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>uv<span class="w"> </span>add<span class="w"> </span>mcap-logger
+</span></code></pre></div>
+<p>After this we should have the following elements in the project's folder:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>.
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── .python-version
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├── README.md
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>├── hello.py
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>└── pyproject.toml
+</span></code></pre></div>
+<p>We will replace the <code>hello.py</code> script with <code>application.py</code> adn <code>library.py</code>.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">application.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">logging</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="kn">from</span> <span class="nn">mcap_logger.mcap_handler</span> <span class="kn">import</span> <span class="n">McapHandler</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="k">def</span> <span class="nf">get_logger</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">:</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a>    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>    <span class="n">mcap_handler</span> <span class="o">=</span> <span class="n">McapHandler</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a>    <span class="n">mcap_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a>    <span class="n">stream_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a>    <span class="n">stream_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;WARNING&quot;</span><span class="p">)</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">mcap_handler</span><span class="p">)</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">stream_handler</span><span class="p">)</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a>    <span class="k">return</span> <span class="n">logger</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="n">log_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;application.mcap&quot;</span><span class="p">)</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;mcap_logger&quot;</span><span class="p">,</span> <span class="n">log_file</span><span class="p">)</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>  <span class="c1"># noqa: ANN201</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a>    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Hello from mcap-logger-tutorial!&quot;</span><span class="p">)</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27"></a>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28"></a>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30"></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+<p>The <code>application.py</code> is just our <code>examples/hello.py</code> example, and it only logs a log message.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">library.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">THERMOSTAT_DATA</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">70</span><span class="p">},</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">75</span><span class="p">},</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">},</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">110</span><span class="p">},</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">79</span><span class="p">},</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="p">]</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="k">def</span> <span class="nf">get_thermostat_data</span><span class="p">():</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a>    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">THERMOSTAT_DATA</span><span class="p">:</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a>        <span class="n">humidity</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;humid&quot;</span><span class="p">]</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a>        <span class="k">if</span> <span class="n">humidity</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">humidity</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;invalid humidity!&quot;</span><span class="p">)</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17"></a>            <span class="k">yield</span> <span class="n">data</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18"></a>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19"></a>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21"></a>    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">get_thermostat_data</span><span class="p">():</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>The <code>library.py</code> is a modification of our <code>examples/thermostat.py</code> script. In this version we have the
+<code>get_thermostat_data</code> function, that yields back the data from the <code>THERMOSTAT_DATA</code> array, when the data is valid. If
+the humidity is out of boundaries then it will print a message to the console.</p>
+<p>We can run this library example with <code>uv run library.py</code> and see the printed out data and the error message.</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="o">{</span><span class="s1">&#39;temp&#39;</span>:<span class="w"> </span><span class="m">10</span>,<span class="w"> </span><span class="s1">&#39;humid&#39;</span>:<span class="w"> </span><span class="m">70</span><span class="o">}</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="o">{</span><span class="s1">&#39;temp&#39;</span>:<span class="w"> </span><span class="m">5</span>,<span class="w"> </span><span class="s1">&#39;humid&#39;</span>:<span class="w"> </span><span class="m">75</span><span class="o">}</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="o">{</span><span class="s1">&#39;temp&#39;</span>:<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="s1">&#39;humid&#39;</span>:<span class="w"> </span><span class="m">78</span><span class="o">}</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>invalid<span class="w"> </span>humidity!
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="o">{</span><span class="s1">&#39;temp&#39;</span>:<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="s1">&#39;humid&#39;</span>:<span class="w"> </span><span class="m">79</span><span class="o">}</span>
+</span></code></pre></div>
+<h2 id="import-our-library-into-our-application">Import our library into our application</h2>
+<p>Now, we will import this simple library into our application, and call its <code>get_thermostat_data</code> function in a for-loop.
+We will also simulate the time passing with a <code>time.sleep</code> call. After the <code>log.info</code> call we should add the following
+code.</p>
+<div class="language-python highlight"><span class="filename">application.py</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">get_thermostat_data</span><span class="p">():</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;fetching data from thermostat&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>When we run this code that we can see the warning message on the console and that the <code>.mcap</code> log file was created with
+all the log messages we created except the library's logs.</p>
+<p>However, using <code>print</code> statements should be avoided, so we have to create a logger for our library.</p>
+<h2 id="creating-logger-for-our-library">Creating logger for our library</h2>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Python's Logging HOWTO guide has a nice documentation on how to
+<a href="https://docs.python.org/3/howto/logging.html#configuring-logging-for-a-library">configure logging for a library</a></p>
+</div>
+<p>The application developer knows their target audience and what handlers are most appropriate for their application. So
+we have to give the application full control over how the library does the logging. Our library should create a logger
+with a unique and easily identifiable name, and we should not add any handlers to it other than <code>NullHandler</code>.</p>
+<p>A <a href="https://docs.python.org/3/library/logging.handlers.html#logging.NullHandler">NullHandler</a> is a 'do nothing' handler,
+and we can use it to assure that our logger won't fall back to the <code>LastResort</code> handler.</p>
+<p>Loggers are hierarchical, and they inherit configurations from the top-level logger. If all logging by a library <code>foo</code>
+is done using loggers with names matching <code>foo.x</code>, <code>foo.y</code>, etc. then we can configure the <code>NullHandler</code> only for the
+top-level logger of the library like the following code.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span> <span class="nn">logging</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">NullHandler</span><span class="p">())</span>
+</span></code></pre></div>
+<p>In our case, we have only one library script, so we will configure our logger in it. In the <code>library.py</code> we import the
+<code>logging</code> package and create our logger instance called by <code>library</code>. Then we add the <code>NullHandler</code> to the library's
+logger.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use a logger with a unique and easily identifiable name, such as the <code>__name__</code> for your library’s top-level package
+or module.</p>
+</div>
+<div class="language-python highlight"><span class="filename">library.py</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span> <span class="nn">logging</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;library&quot;</span><span class="p">)</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">log</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">NullHandler</span><span class="p">())</span>
+</span></code></pre></div>
+<p>Then we should replace the <code>print</code> statements with logger calls.</p>
+<div class="language-python highlight"><span class="filename">library.py</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;invalid humidity!&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>and</p>
+<div class="language-python highlight"><span class="filename">library.py</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></code></pre></div>
+<p>If we run now our library standalone, we can see that no output is generated on the console. This is because all the
+logs are handed over to the <code>NullHandler</code> which discards them.</p>
+<p>We can change this behavior for the standalone run if we change the configuration of the logger when we only run the
+library script. The code belows shows how our library script should look like after the changes.</p>
+<div class="language-python highlight"><span class="filename">library.py</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">import</span> <span class="nn">logging</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;library&quot;</span><span class="p">)</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">log</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">NullHandler</span><span class="p">())</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="n">THERMOSTAT_DATA</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">70</span><span class="p">},</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">75</span><span class="p">},</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">78</span><span class="p">},</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">110</span><span class="p">},</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">79</span><span class="p">},</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="p">]</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="k">def</span> <span class="nf">get_thermostat_data</span><span class="p">():</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">THERMOSTAT_DATA</span><span class="p">:</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>        <span class="n">humidity</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;humid&quot;</span><span class="p">]</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>        <span class="k">if</span> <span class="n">humidity</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">humidity</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;invalid humidity!&quot;</span><span class="p">)</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>            <span class="k">yield</span> <span class="n">data</span>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a>    <span class="n">stream_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+</span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a>    <span class="n">stream_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a>    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;library&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">stream_handler</span><span class="p">)</span>
+</span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a>    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;library&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a>
+</span><span id="__span-10-31"><a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a>    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">get_thermostat_data</span><span class="p">():</span>
+</span><span id="__span-10-32"><a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a>        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Loggers are <a href="https://www.geeksforgeeks.org/singleton-pattern-in-python-a-complete-guide/">singletons</a>,
+this means the only one instance of a logger with a given name exists. When you call the <code>getLogger</code> function with
+an existing name, then it will return that singleton.</p>
+</div>
+<h2 id="configure-the-library-logger-from-application">Configure the library logger from application</h2>
+<p>Now, that we have library with logging, we have to configure its logger from our application if we want to use it.
+We have many possibilities on how we could configure the logger, for now, let's say that we want the library to use the
+same level of logging as the application logger, and it should also log to the same file.</p>
+<p>We will add this configuration step into our <code>get_logger</code> function, where we defined the <code>StreamHandler</code> and
+<code>McapHandler</code> for our application logging. We just have to add the same handler to the library's logger as follows.</p>
+<div class="language-python highlight"><span class="filename">application.py</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span> <span class="nf">get_logger</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">:</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="n">mcap_handler</span> <span class="o">=</span> <span class="n">McapHandler</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="n">mcap_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>    <span class="n">stream_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    <span class="n">stream_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">mcap_handler</span><span class="p">)</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">stream_handler</span><span class="p">)</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>    <span class="n">library_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;library&quot;</span><span class="p">)</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>    <span class="n">library_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">stream_handler</span><span class="p">)</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>    <span class="n">library_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">mcap_handler</span><span class="p">)</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>    <span class="k">return</span> <span class="n">logger</span>
+</span></code></pre></div>
+<p>When we run the application now, we should see all the log messages on the console and in the <code>.mcap</code> file.</p>
+<div class="language-shell highlight"><span class="filename">applciation.mcap</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="o">[</span><span class="w"> </span>INFO<span class="o">][</span><span class="m">12</span>:40:34.683<span class="w"> </span>PM<span class="w"> </span>CET<span class="o">][</span>application<span class="o">]</span>:<span class="w"> </span>Hello<span class="w"> </span>from<span class="w"> </span>mcap-logger-tutorial!
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="o">[</span>DEBUG<span class="o">][</span><span class="m">12</span>:40:35.184<span class="w"> </span>PM<span class="w"> </span>CET<span class="o">][</span>application<span class="o">]</span>:<span class="w"> </span>fetching<span class="w"> </span>data<span class="w"> </span>from<span class="w"> </span>thermostat
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="o">[</span>DEBUG<span class="o">][</span><span class="m">12</span>:40:35.684<span class="w"> </span>PM<span class="w"> </span>CET<span class="o">][</span>application<span class="o">]</span>:<span class="w"> </span>fetching<span class="w"> </span>data<span class="w"> </span>from<span class="w"> </span>thermostat
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="o">[</span>DEBUG<span class="o">][</span><span class="m">12</span>:40:36.184<span class="w"> </span>PM<span class="w"> </span>CET<span class="o">][</span>application<span class="o">]</span>:<span class="w"> </span>fetching<span class="w"> </span>data<span class="w"> </span>from<span class="w"> </span>thermostat
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="o">[</span><span class="w"> </span>WARN<span class="o">][</span><span class="m">12</span>:40:36.184<span class="w"> </span>PM<span class="w"> </span>CET<span class="o">][</span>library<span class="o">]</span>:<span class="w"> </span>invalid<span class="w"> </span>humidity!
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="o">[</span>DEBUG<span class="o">][</span><span class="m">12</span>:40:36.684<span class="w"> </span>PM<span class="w"> </span>CET<span class="o">][</span>application<span class="o">]</span>:<span class="w"> </span>fetching<span class="w"> </span>data<span class="w"> </span>from<span class="w"> </span>thermostat
+</span></code></pre></div>
+<p>As you can see, this approach gives us plenty of opportunity to fine tune the logging behaviour of our library from our
+application. We configure the library logger to only log higher severity message on the console and the mcap file. Or
+log into a different mcap file or not to do file logging at all. The choice is in the application developer to figure
+out what makes sense for them.</p>
+<div class="admonition warning">
+<p class="admonition-title">Take care to document how your library uses logging - for example, the names of loggers used.</p>
+</div>
+<h2 id="adding-data-logging">Adding data logging</h2>
+<p>Following the rule of thumb for how to configure library logging, we can see that we should not let our library populate
+our system with data log files whenever we run it. As before this should be up to the application developer.</p>
+<p>To achieve this we should follow the following rules:</p>
+<ol>
+<li>Functions that don't run as a process, must not create <code>topic</code> logs.</li>
+<li>Functions that run as a process, should create <code>topic</code> logs.</li>
+<li>ProtoBuf file should be provided for <code>topic</code> logs.</li>
+</ol>
+<p>Let's see two scenarios to see the difference.</p>
+<h3 id="data-logging-from-application">Data logging from application</h3>
+<p>Given that we have the following <code>aplication.py</code> script.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">application.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span>
+<span class="normal"><a href="#__codelineno-13-11">11</a></span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span>
+<span class="normal"><a href="#__codelineno-13-13">13</a></span>
+<span class="normal"><a href="#__codelineno-13-14">14</a></span>
+<span class="normal"><a href="#__codelineno-13-15">15</a></span>
+<span class="normal"><a href="#__codelineno-13-16">16</a></span>
+<span class="normal"><a href="#__codelineno-13-17">17</a></span>
+<span class="normal"><a href="#__codelineno-13-18">18</a></span>
+<span class="normal"><a href="#__codelineno-13-19">19</a></span>
+<span class="normal"><a href="#__codelineno-13-20">20</a></span>
+<span class="normal"><a href="#__codelineno-13-21">21</a></span>
+<span class="normal"><a href="#__codelineno-13-22">22</a></span>
+<span class="normal"><a href="#__codelineno-13-23">23</a></span>
+<span class="normal"><a href="#__codelineno-13-24">24</a></span>
+<span class="normal"><a href="#__codelineno-13-25">25</a></span>
+<span class="normal"><a href="#__codelineno-13-26">26</a></span>
+<span class="normal"><a href="#__codelineno-13-27">27</a></span>
+<span class="normal"><a href="#__codelineno-13-28">28</a></span>
+<span class="normal"><a href="#__codelineno-13-29">29</a></span>
+<span class="normal"><a href="#__codelineno-13-30">30</a></span>
+<span class="normal"><a href="#__codelineno-13-31">31</a></span>
+<span class="normal"><a href="#__codelineno-13-32">32</a></span>
+<span class="normal"><a href="#__codelineno-13-33">33</a></span>
+<span class="normal"><a href="#__codelineno-13-34">34</a></span>
+<span class="normal"><a href="#__codelineno-13-35">35</a></span>
+<span class="normal"><a href="#__codelineno-13-36">36</a></span>
+<span class="normal"><a href="#__codelineno-13-37">37</a></span>
+<span class="normal"><a href="#__codelineno-13-38">38</a></span>
+<span class="normal"><a href="#__codelineno-13-39">39</a></span>
+<span class="normal"><a href="#__codelineno-13-40">40</a></span>
+<span class="normal"><a href="#__codelineno-13-41">41</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="kn">import</span> <span class="nn">logging</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="kn">import</span> <span class="nn">time</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="kn">from</span> <span class="nn">examples.library</span> <span class="kn">import</span> <span class="n">get_thermostat_data</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="kn">from</span> <span class="nn">mcap_logger.mcap_handler</span> <span class="kn">import</span> <span class="n">McapHandler</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7"></a>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8"></a>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="k">def</span> <span class="nf">get_logger</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">:</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10"></a>    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11"></a>    <span class="n">mcap_handler</span> <span class="o">=</span> <span class="n">McapHandler</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12"></a>    <span class="n">mcap_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13"></a>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14"></a>    <span class="n">stream_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15"></a>    <span class="n">stream_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16"></a>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">mcap_handler</span><span class="p">)</span>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">stream_handler</span><span class="p">)</span>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20"></a>
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21"></a>    <span class="n">library_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;library&quot;</span><span class="p">)</span>
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22"></a>    <span class="n">library_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">stream_handler</span><span class="p">)</span>
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23"></a>    <span class="n">library_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">mcap_handler</span><span class="p">)</span>
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24"></a>
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25"></a>    <span class="k">return</span> <span class="n">logger</span>
+</span><span id="__span-13-26"><a id="__codelineno-13-26" name="__codelineno-13-26"></a>
+</span><span id="__span-13-27"><a id="__codelineno-13-27" name="__codelineno-13-27"></a>
+</span><span id="__span-13-28"><a id="__codelineno-13-28" name="__codelineno-13-28"></a><span class="n">log_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;application.mcap&quot;</span><span class="p">)</span>
+</span><span id="__span-13-29"><a id="__codelineno-13-29" name="__codelineno-13-29"></a><span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;mcap_logger&quot;</span><span class="p">,</span> <span class="n">log_file</span><span class="p">)</span>
+</span><span id="__span-13-30"><a id="__codelineno-13-30" name="__codelineno-13-30"></a>
+</span><span id="__span-13-31"><a id="__codelineno-13-31" name="__codelineno-13-31"></a>
+</span><span id="__span-13-32"><a id="__codelineno-13-32" name="__codelineno-13-32"></a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-13-33"><a id="__codelineno-13-33" name="__codelineno-13-33"></a>    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Hello from mcap-logger-tutorial!&quot;</span><span class="p">)</span>
+</span><span id="__span-13-34"><a id="__codelineno-13-34" name="__codelineno-13-34"></a>
+</span><span id="__span-13-35"><a id="__codelineno-13-35" name="__codelineno-13-35"></a>    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">get_thermostat_data</span><span class="p">():</span>
+</span><span id="__span-13-36"><a id="__codelineno-13-36" name="__codelineno-13-36"></a>        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</span><span id="__span-13-37"><a id="__codelineno-13-37" name="__codelineno-13-37"></a>        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;fetching data from thermostat&quot;</span><span class="p">)</span>
+</span><span id="__span-13-38"><a id="__codelineno-13-38" name="__codelineno-13-38"></a>
+</span><span id="__span-13-39"><a id="__codelineno-13-39" name="__codelineno-13-39"></a>
+</span><span id="__span-13-40"><a id="__codelineno-13-40" name="__codelineno-13-40"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span id="__span-13-41"><a id="__codelineno-13-41" name="__codelineno-13-41"></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Let's say that we want to log the thermostat data from our application to the mcap file. In this case, we should import
+the PotoBuf script of the thermostat data into our <code>applicaton.py</code> script and call the <code>TopicLogger</code> from there.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">application.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span>
+<span class="normal"><a href="#__codelineno-14-12">12</a></span>
+<span class="normal"><a href="#__codelineno-14-13">13</a></span>
+<span class="normal"><a href="#__codelineno-14-14">14</a></span>
+<span class="normal"><a href="#__codelineno-14-15">15</a></span>
+<span class="normal"><a href="#__codelineno-14-16">16</a></span>
+<span class="normal"><a href="#__codelineno-14-17">17</a></span>
+<span class="normal"><a href="#__codelineno-14-18">18</a></span>
+<span class="normal"><a href="#__codelineno-14-19">19</a></span>
+<span class="normal"><a href="#__codelineno-14-20">20</a></span>
+<span class="normal"><a href="#__codelineno-14-21">21</a></span>
+<span class="normal"><a href="#__codelineno-14-22">22</a></span>
+<span class="normal"><a href="#__codelineno-14-23">23</a></span>
+<span class="normal"><a href="#__codelineno-14-24">24</a></span>
+<span class="normal"><a href="#__codelineno-14-25">25</a></span>
+<span class="normal"><a href="#__codelineno-14-26">26</a></span>
+<span class="normal"><a href="#__codelineno-14-27">27</a></span>
+<span class="normal"><a href="#__codelineno-14-28">28</a></span>
+<span class="normal"><a href="#__codelineno-14-29">29</a></span>
+<span class="normal"><a href="#__codelineno-14-30">30</a></span>
+<span class="normal"><a href="#__codelineno-14-31">31</a></span>
+<span class="normal"><a href="#__codelineno-14-32">32</a></span>
+<span class="normal"><a href="#__codelineno-14-33">33</a></span>
+<span class="normal"><a href="#__codelineno-14-34">34</a></span>
+<span class="normal"><a href="#__codelineno-14-35">35</a></span>
+<span class="normal"><a href="#__codelineno-14-36">36</a></span>
+<span class="normal"><a href="#__codelineno-14-37">37</a></span>
+<span class="normal"><a href="#__codelineno-14-38">38</a></span>
+<span class="normal"><a href="#__codelineno-14-39">39</a></span>
+<span class="normal"><a href="#__codelineno-14-40">40</a></span>
+<span class="normal"><a href="#__codelineno-14-41">41</a></span>
+<span class="normal"><a href="#__codelineno-14-42">42</a></span>
+<span class="normal"><a href="#__codelineno-14-43">43</a></span>
+<span class="normal"><a href="#__codelineno-14-44">44</a></span>
+<span class="normal"><a href="#__codelineno-14-45">45</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="kn">import</span> <span class="nn">logging</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="kn">import</span> <span class="nn">time</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="kn">from</span> <span class="nn">examples.library</span> <span class="kn">import</span> <span class="n">get_thermostat_data</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="kn">from</span> <span class="nn">examples.thermostat_data_pb2</span> <span class="kn">import</span> <span class="n">ThermostatData</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="kn">from</span> <span class="nn">mcap_logger.mcap_handler</span> <span class="kn">import</span> <span class="n">McapHandler</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="kn">from</span> <span class="nn">mcap_logger.topic_logger</span> <span class="kn">import</span> <span class="n">TopicLogger</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9"></a>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10"></a>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="k">def</span> <span class="nf">get_logger</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">:</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12"></a>    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13"></a>    <span class="n">mcap_handler</span> <span class="o">=</span> <span class="n">McapHandler</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14"></a>    <span class="n">mcap_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15"></a>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16"></a>    <span class="n">stream_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17"></a>    <span class="n">stream_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18"></a>
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">mcap_handler</span><span class="p">)</span>
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">stream_handler</span><span class="p">)</span>
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22"></a>
+</span><span id="__span-14-23"><a id="__codelineno-14-23" name="__codelineno-14-23"></a>    <span class="n">library_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;library&quot;</span><span class="p">)</span>
+</span><span id="__span-14-24"><a id="__codelineno-14-24" name="__codelineno-14-24"></a>    <span class="n">library_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">stream_handler</span><span class="p">)</span>
+</span><span id="__span-14-25"><a id="__codelineno-14-25" name="__codelineno-14-25"></a>    <span class="n">library_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">mcap_handler</span><span class="p">)</span>
+</span><span id="__span-14-26"><a id="__codelineno-14-26" name="__codelineno-14-26"></a>
+</span><span id="__span-14-27"><a id="__codelineno-14-27" name="__codelineno-14-27"></a>    <span class="k">return</span> <span class="n">logger</span>
+</span><span id="__span-14-28"><a id="__codelineno-14-28" name="__codelineno-14-28"></a>
+</span><span id="__span-14-29"><a id="__codelineno-14-29" name="__codelineno-14-29"></a>
+</span><span id="__span-14-30"><a id="__codelineno-14-30" name="__codelineno-14-30"></a><span class="n">log_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;application.mcap&quot;</span><span class="p">)</span>
+</span><span id="__span-14-31"><a id="__codelineno-14-31" name="__codelineno-14-31"></a><span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;mcap_logger&quot;</span><span class="p">,</span> <span class="n">log_file</span><span class="p">)</span>
+</span><span id="__span-14-32"><a id="__codelineno-14-32" name="__codelineno-14-32"></a>
+</span><span id="__span-14-33"><a id="__codelineno-14-33" name="__codelineno-14-33"></a>
+</span><span id="__span-14-34"><a id="__codelineno-14-34" name="__codelineno-14-34"></a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-14-35"><a id="__codelineno-14-35" name="__codelineno-14-35"></a>    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Hello from mcap-logger-tutorial!&quot;</span><span class="p">)</span>
+</span><span id="__span-14-36"><a id="__codelineno-14-36" name="__codelineno-14-36"></a>
+</span><span id="__span-14-37"><a id="__codelineno-14-37" name="__codelineno-14-37"></a>    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">get_thermostat_data</span><span class="p">():</span>
+</span><span id="__span-14-38"><a id="__codelineno-14-38" name="__codelineno-14-38"></a>        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</span><span id="__span-14-39"><a id="__codelineno-14-39" name="__codelineno-14-39"></a>        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;fetching data from thermostat&quot;</span><span class="p">)</span>
+</span><span id="__span-14-40"><a id="__codelineno-14-40" name="__codelineno-14-40"></a>        <span class="n">data_log</span> <span class="o">=</span> <span class="n">ThermostatData</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;temp&quot;</span><span class="p">],</span> <span class="n">humidity</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;humid&quot;</span><span class="p">])</span>
+</span><span id="__span-14-41"><a id="__codelineno-14-41" name="__codelineno-14-41"></a>        <span class="n">TopicLogger</span><span class="p">(</span><span class="s2">&quot;mcap_logger&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">topic</span><span class="p">(</span><span class="s2">&quot;/thermostat&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data_log</span><span class="p">)</span>
+</span><span id="__span-14-42"><a id="__codelineno-14-42" name="__codelineno-14-42"></a>
+</span><span id="__span-14-43"><a id="__codelineno-14-43" name="__codelineno-14-43"></a>
+</span><span id="__span-14-44"><a id="__codelineno-14-44" name="__codelineno-14-44"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span id="__span-14-45"><a id="__codelineno-14-45" name="__codelineno-14-45"></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+<p>In this scenario, the library is only used to get the data from our "sensor", and because of this it is the applications
+choice and responsibility to log it.</p>
+<h3 id="data-logging-from-library">Data logging from library</h3>
+<p>It is possible that the library has functions that can be imported and run as a process by other scripts. For example,
+lets add a <code>thermostat_monitor</code> to our library, that fetches the data from the thermostat, logs the data and creates a
+warning log if the temperature is below zero.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">library.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-15-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-15-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-15-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-15-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-15-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-15-10">10</a></span>
+<span class="normal"><a href="#__codelineno-15-11">11</a></span>
+<span class="normal"><a href="#__codelineno-15-12">12</a></span>
+<span class="normal"><a href="#__codelineno-15-13">13</a></span>
+<span class="normal"><a href="#__codelineno-15-14">14</a></span>
+<span class="normal"><a href="#__codelineno-15-15">15</a></span>
+<span class="normal"><a href="#__codelineno-15-16">16</a></span>
+<span class="normal"><a href="#__codelineno-15-17">17</a></span>
+<span class="normal"><a href="#__codelineno-15-18">18</a></span>
+<span class="normal"><a href="#__codelineno-15-19">19</a></span>
+<span class="normal"><a href="#__codelineno-15-20">20</a></span>
+<span class="normal"><a href="#__codelineno-15-21">21</a></span>
+<span class="normal"><a href="#__codelineno-15-22">22</a></span>
+<span class="normal"><a href="#__codelineno-15-23">23</a></span>
+<span class="normal"><a href="#__codelineno-15-24">24</a></span>
+<span class="normal"><a href="#__codelineno-15-25">25</a></span>
+<span class="normal"><a href="#__codelineno-15-26">26</a></span>
+<span class="normal"><a href="#__codelineno-15-27">27</a></span>
+<span class="normal"><a href="#__codelineno-15-28">28</a></span>
+<span class="normal"><a href="#__codelineno-15-29">29</a></span>
+<span class="normal"><a href="#__codelineno-15-30">30</a></span>
+<span class="normal"><a href="#__codelineno-15-31">31</a></span>
+<span class="normal"><a href="#__codelineno-15-32">32</a></span>
+<span class="normal"><a href="#__codelineno-15-33">33</a></span>
+<span class="normal"><a href="#__codelineno-15-34">34</a></span>
+<span class="normal"><a href="#__codelineno-15-35">35</a></span>
+<span class="normal"><a href="#__codelineno-15-36">36</a></span>
+<span class="normal"><a href="#__codelineno-15-37">37</a></span>
+<span class="normal"><a href="#__codelineno-15-38">38</a></span>
+<span class="normal"><a href="#__codelineno-15-39">39</a></span>
+<span class="normal"><a href="#__codelineno-15-40">40</a></span>
+<span class="normal"><a href="#__codelineno-15-41">41</a></span>
+<span class="normal"><a href="#__codelineno-15-42">42</a></span>
+<span class="normal"><a href="#__codelineno-15-43">43</a></span>
+<span class="normal"><a href="#__codelineno-15-44">44</a></span>
+<span class="normal"><a href="#__codelineno-15-45">45</a></span>
+<span class="normal"><a href="#__codelineno-15-46">46</a></span>
+<span class="normal"><a href="#__codelineno-15-47">47</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="kn">import</span> <span class="nn">logging</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="kn">import</span> <span class="nn">time</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="kn">from</span> <span class="nn">examples.thermostat_data_pb2</span> <span class="kn">import</span> <span class="n">ThermostatData</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="kn">from</span> <span class="nn">mcap_logger.topic_logger</span> <span class="kn">import</span> <span class="n">TopicLogger</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6"></a>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;library&quot;</span><span class="p">)</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="n">log</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">NullHandler</span><span class="p">())</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9"></a>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="n">THERMOSTAT_DATA</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">70</span><span class="p">},</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">75</span><span class="p">},</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">789</span><span class="p">},</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">},</span>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15"></a>    <span class="p">{</span><span class="s2">&quot;temp&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;humid&quot;</span><span class="p">:</span> <span class="mi">79</span><span class="p">},</span>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16"></a><span class="p">]</span>
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17"></a>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18"></a>
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19"></a><span class="k">def</span> <span class="nf">get_thermostat_data</span><span class="p">():</span>
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20"></a>    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">THERMOSTAT_DATA</span><span class="p">:</span>
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21"></a>        <span class="n">humidity</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;humid&quot;</span><span class="p">]</span>
+</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22"></a>
+</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23"></a>        <span class="k">if</span> <span class="n">humidity</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">humidity</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+</span><span id="__span-15-24"><a id="__codelineno-15-24" name="__codelineno-15-24"></a>            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;invalid humidity!&quot;</span><span class="p">)</span>
+</span><span id="__span-15-25"><a id="__codelineno-15-25" name="__codelineno-15-25"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-15-26"><a id="__codelineno-15-26" name="__codelineno-15-26"></a>            <span class="k">yield</span> <span class="n">data</span>
+</span><span id="__span-15-27"><a id="__codelineno-15-27" name="__codelineno-15-27"></a>
+</span><span id="__span-15-28"><a id="__codelineno-15-28" name="__codelineno-15-28"></a>
+</span><span id="__span-15-29"><a id="__codelineno-15-29" name="__codelineno-15-29"></a><span class="k">def</span> <span class="nf">thermostat_monitor</span><span class="p">():</span>
+</span><span id="__span-15-30"><a id="__codelineno-15-30" name="__codelineno-15-30"></a>    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">get_thermostat_data</span><span class="p">():</span>
+</span><span id="__span-15-31"><a id="__codelineno-15-31" name="__codelineno-15-31"></a>        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</span><span id="__span-15-32"><a id="__codelineno-15-32" name="__codelineno-15-32"></a>        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;got data from thermostat&quot;</span><span class="p">)</span>
+</span><span id="__span-15-33"><a id="__codelineno-15-33" name="__codelineno-15-33"></a>
+</span><span id="__span-15-34"><a id="__codelineno-15-34" name="__codelineno-15-34"></a>        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;temp&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-15-35"><a id="__codelineno-15-35" name="__codelineno-15-35"></a>            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;temperature is below zero&quot;</span><span class="p">)</span>
+</span><span id="__span-15-36"><a id="__codelineno-15-36" name="__codelineno-15-36"></a>
+</span><span id="__span-15-37"><a id="__codelineno-15-37" name="__codelineno-15-37"></a>        <span class="n">data_log</span> <span class="o">=</span> <span class="n">ThermostatData</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;temp&quot;</span><span class="p">],</span> <span class="n">humidity</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;humid&quot;</span><span class="p">])</span>
+</span><span id="__span-15-38"><a id="__codelineno-15-38" name="__codelineno-15-38"></a>        <span class="n">TopicLogger</span><span class="p">(</span><span class="s2">&quot;library&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">topic</span><span class="p">(</span><span class="s2">&quot;/thermostat&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data_log</span><span class="p">)</span>
+</span><span id="__span-15-39"><a id="__codelineno-15-39" name="__codelineno-15-39"></a>
+</span><span id="__span-15-40"><a id="__codelineno-15-40" name="__codelineno-15-40"></a>
+</span><span id="__span-15-41"><a id="__codelineno-15-41" name="__codelineno-15-41"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span id="__span-15-42"><a id="__codelineno-15-42" name="__codelineno-15-42"></a>    <span class="n">stream_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+</span><span id="__span-15-43"><a id="__codelineno-15-43" name="__codelineno-15-43"></a>    <span class="n">stream_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</span><span id="__span-15-44"><a id="__codelineno-15-44" name="__codelineno-15-44"></a>    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;library&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">stream_handler</span><span class="p">)</span>
+</span><span id="__span-15-45"><a id="__codelineno-15-45" name="__codelineno-15-45"></a>    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;library&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</span><span id="__span-15-46"><a id="__codelineno-15-46" name="__codelineno-15-46"></a>
+</span><span id="__span-15-47"><a id="__codelineno-15-47" name="__codelineno-15-47"></a>    <span class="n">thermostat_monitor</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+<p>The monitor function can be imported by another script and run it as a process until all the data is
+fetched. In this case, the monitor function does the logging, but only if the given logger name has an <code>McapHandler</code>
+added to it. If no, then the topic log will be discarded.</p>
+<p>From the application side, we will configure the logger of the library and run the <code>thermostat_monitor</code> function.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">application.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-16-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-16-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-16-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-16-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-16-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-16-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-16-10">10</a></span>
+<span class="normal"><a href="#__codelineno-16-11">11</a></span>
+<span class="normal"><a href="#__codelineno-16-12">12</a></span>
+<span class="normal"><a href="#__codelineno-16-13">13</a></span>
+<span class="normal"><a href="#__codelineno-16-14">14</a></span>
+<span class="normal"><a href="#__codelineno-16-15">15</a></span>
+<span class="normal"><a href="#__codelineno-16-16">16</a></span>
+<span class="normal"><a href="#__codelineno-16-17">17</a></span>
+<span class="normal"><a href="#__codelineno-16-18">18</a></span>
+<span class="normal"><a href="#__codelineno-16-19">19</a></span>
+<span class="normal"><a href="#__codelineno-16-20">20</a></span>
+<span class="normal"><a href="#__codelineno-16-21">21</a></span>
+<span class="normal"><a href="#__codelineno-16-22">22</a></span>
+<span class="normal"><a href="#__codelineno-16-23">23</a></span>
+<span class="normal"><a href="#__codelineno-16-24">24</a></span>
+<span class="normal"><a href="#__codelineno-16-25">25</a></span>
+<span class="normal"><a href="#__codelineno-16-26">26</a></span>
+<span class="normal"><a href="#__codelineno-16-27">27</a></span>
+<span class="normal"><a href="#__codelineno-16-28">28</a></span>
+<span class="normal"><a href="#__codelineno-16-29">29</a></span>
+<span class="normal"><a href="#__codelineno-16-30">30</a></span>
+<span class="normal"><a href="#__codelineno-16-31">31</a></span>
+<span class="normal"><a href="#__codelineno-16-32">32</a></span>
+<span class="normal"><a href="#__codelineno-16-33">33</a></span>
+<span class="normal"><a href="#__codelineno-16-34">34</a></span>
+<span class="normal"><a href="#__codelineno-16-35">35</a></span>
+<span class="normal"><a href="#__codelineno-16-36">36</a></span>
+<span class="normal"><a href="#__codelineno-16-37">37</a></span>
+<span class="normal"><a href="#__codelineno-16-38">38</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="kn">import</span> <span class="nn">logging</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="kn">from</span> <span class="nn">examples.library</span> <span class="kn">import</span> <span class="n">thermostat_monitor</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="kn">from</span> <span class="nn">mcap_logger.mcap_handler</span> <span class="kn">import</span> <span class="n">McapHandler</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6"></a>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7"></a>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="k">def</span> <span class="nf">get_logger</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">:</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9"></a>    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10"></a>    <span class="n">mcap_handler</span> <span class="o">=</span> <span class="n">McapHandler</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11"></a>    <span class="n">mcap_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12"></a>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13"></a>    <span class="n">stream_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14"></a>    <span class="n">stream_handler</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;INFO&quot;</span><span class="p">)</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15"></a>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">mcap_handler</span><span class="p">)</span>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">stream_handler</span><span class="p">)</span>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19"></a>
+</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20"></a>    <span class="n">library_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;library&quot;</span><span class="p">)</span>
+</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21"></a>    <span class="n">library_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</span><span id="__span-16-22"><a id="__codelineno-16-22" name="__codelineno-16-22"></a>    <span class="n">library_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">stream_handler</span><span class="p">)</span>
+</span><span id="__span-16-23"><a id="__codelineno-16-23" name="__codelineno-16-23"></a>    <span class="n">library_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">mcap_handler</span><span class="p">)</span>
+</span><span id="__span-16-24"><a id="__codelineno-16-24" name="__codelineno-16-24"></a>
+</span><span id="__span-16-25"><a id="__codelineno-16-25" name="__codelineno-16-25"></a>    <span class="k">return</span> <span class="n">logger</span>
+</span><span id="__span-16-26"><a id="__codelineno-16-26" name="__codelineno-16-26"></a>
+</span><span id="__span-16-27"><a id="__codelineno-16-27" name="__codelineno-16-27"></a>
+</span><span id="__span-16-28"><a id="__codelineno-16-28" name="__codelineno-16-28"></a><span class="n">log_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;application.mcap&quot;</span><span class="p">)</span>
+</span><span id="__span-16-29"><a id="__codelineno-16-29" name="__codelineno-16-29"></a><span class="n">log</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="s2">&quot;mcap_logger&quot;</span><span class="p">,</span> <span class="n">log_file</span><span class="p">)</span>
+</span><span id="__span-16-30"><a id="__codelineno-16-30" name="__codelineno-16-30"></a>
+</span><span id="__span-16-31"><a id="__codelineno-16-31" name="__codelineno-16-31"></a>
+</span><span id="__span-16-32"><a id="__codelineno-16-32" name="__codelineno-16-32"></a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-16-33"><a id="__codelineno-16-33" name="__codelineno-16-33"></a>    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Hello from mcap-logger-tutorial!&quot;</span><span class="p">)</span>
+</span><span id="__span-16-34"><a id="__codelineno-16-34" name="__codelineno-16-34"></a>    <span class="n">thermostat_monitor</span><span class="p">()</span>
+</span><span id="__span-16-35"><a id="__codelineno-16-35" name="__codelineno-16-35"></a>
+</span><span id="__span-16-36"><a id="__codelineno-16-36" name="__codelineno-16-36"></a>
+</span><span id="__span-16-37"><a id="__codelineno-16-37" name="__codelineno-16-37"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span id="__span-16-38"><a id="__codelineno-16-38" name="__codelineno-16-38"></a>    <span class="n">main</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+<p>When we run the application, then we should see the info and warning messages, and in the <code>.mcap</code> file we should see all
+the log messages.</p>
+
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../use-console-stream-with-mcap-logging/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Use Console Stream With MCAP Logging" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Use Console Stream With MCAP Logging
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../how-to-guides/" class="md-footer__link md-footer__link--next" aria-label="Next: How-To Guides" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              How-To Guides
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.2ab50757.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
