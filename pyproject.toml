@@ -1,6 +1,6 @@
 [project]
 name = "mcap-logger"
-version = "0.1.18"
+version = "1.0.0"
 description = "provides a standardised, easy to import and use logging method with mcap"
 authors = [
     { name = "Kristof Kovacs", email = "kristof.kovacs1996@gmail.com" }
