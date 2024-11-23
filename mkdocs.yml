@@ -37,6 +37,7 @@ nav:
       - Foxglove: explanations/foxglove.md
       - MCAP: explanations/mcap.md
       - ProtoBuf: explanations/protobuf.md
+  - Changelog: CHANGELOG.md
 
 plugins:
 - mkdocstrings
