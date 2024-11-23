@@ -1,8 +1,8 @@
 # MCAP Logger 🧢
 
-![PyPI - Version](https://img.shields.io/pypi/v/mcap-logger)
+[![PyPI - Version](https://img.shields.io/pypi/v/mcap-logger)](https://pypi.org/project/mcap-logger/)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/8-bit-hunters/mcap_logger/main.svg)](https://results.pre-commit.ci/latest/github/8-bit-hunters/mcap_logger/main)
-![pytest](https://github.com/8-bit-hunters/mcap_logger/actions/workflows/testing.yml/badge.svg)
+[![pytest](https://github.com/8-bit-hunters/mcap_logger/actions/workflows/testing.yml/badge.svg)](https://github.com/8-bit-hunters/mcap_logger/actions/workflows/testing.yml)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.dev/)
@@ -19,7 +19,8 @@ The package is...
 Links:
 
 - [Documentation](https://8-bit-hunters.github.io/mcap_logger/)
-- [PyPI package](https://pypi.org/project/mcap-logger/)
+- [PyPI](https://pypi.org/project/mcap-logger/)
+- [Github](https://github.com/8-bit-hunters/mcap_logger)
 
 ## Example usage
 
