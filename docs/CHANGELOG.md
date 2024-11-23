@@ -37,6 +37,9 @@
 
 ### Other
 
+- :green_heart: Fix CI release builds older version
+  ([`ecd7018`](https://github.com/8-bit-hunters/mcap_logger/commit/ecd70187fb40776f8985a5318357b6792ea6bb0b))
+
 - :construction_worker: Only publish to PyPI when new release is created
   ([`2582b2f`](https://github.com/8-bit-hunters/mcap_logger/commit/2582b2f9b8064b93fd47e41e082a57b98181c17a))
 
